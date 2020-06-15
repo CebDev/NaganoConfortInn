@@ -1,3 +1,22 @@
 // Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.section-header{
+  height: 700px;
+  background-image: image_url("background.jpg") ;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+
+  .jumbotron{
+    background-color: rgba(0,0,0, 0.3);
+    padding: 12% 7%;
+    color: #eee;
+
+    h1{
+      font-size: 5em;
+      color: #ef5734;
+    }
+  }
+}
