@@ -3,8 +3,6 @@ class PagesController < ApplicationController
     @title = 'NaganoConforInn'
   end
 
-  def administration
-    @title = 'NCI administration'
-  end
+
 
 end
