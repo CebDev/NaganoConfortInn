@@ -8,6 +8,7 @@ gem 'rails', '3.2.0'
 gem 'sqlite3', '1.3.5'
 gem 'haml', '~> 4.0.7'
 gem 'bootstrap-sass', '~> 3.2.0'
+gem 'jquery-ui-rails', '~> 4.0', '>= 4.0.3.0'
 
 
 # Gems used only for assets and not required
