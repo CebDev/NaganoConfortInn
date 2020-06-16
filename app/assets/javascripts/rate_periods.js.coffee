@@ -2,12 +2,10 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-$(document).ready ->
-  console.log("loaded")
 
 
 $(document).ready ->
-  $('#datepicker-from').datepicker()
+  $('#datepicker-from').datepicker(dateFormat: 'dd/mm/yy')
   dateFormat: 'yy-mm-dd'
-  $('#datepicker-to').datepicker()
+  $('#datepicker-to').datepicker(dateFormat: 'dd/mm/yy')
   dateFormat: 'yy-mm-dd'
