@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20200616134458) do
+ActiveRecord::Schema.define(:version => 20200616142558) do
 
-  create_table "rates_period", :force => true do |t|
+  create_table "rate_periods", :force => true do |t|
     t.string "title"
     t.date   "date_from"
     t.date   "date_to"
