@@ -6,7 +6,7 @@ class RatePeriodsController < ApplicationController
   end
 
   def new
-
+    @room_types = RoomType.all
   end
 
   private

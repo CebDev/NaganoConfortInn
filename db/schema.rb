@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20200616142558) do
+ActiveRecord::Schema.define(:version => 20200616165900) do
 
   create_table "rate_periods", :force => true do |t|
     t.string "title"
@@ -19,6 +19,11 @@ ActiveRecord::Schema.define(:version => 20200616142558) do
     t.date   "date_to"
     t.float  "over_rate_percentage"
     t.float  "over_rate_dollar"
+  end
+
+  create_table "room_types", :force => true do |t|
+    t.string "title"
+    t.text   "description"
   end
 
   create_table "settings", :force => true do |t|
