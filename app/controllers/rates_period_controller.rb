@@ -1,0 +1,2 @@
+class RatesPeriodController < ApplicationController
+end

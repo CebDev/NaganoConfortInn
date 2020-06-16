@@ -1,0 +1,2 @@
+module RatesPeriodHelper
+end
