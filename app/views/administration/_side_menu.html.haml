@@ -1,26 +1,27 @@
 .col-sm-3.col-md-2.sidebar
   %ul.nav.nav-sidebar
+    %h5 Today info
     %li
       = link_to "Overview", administration_path, :class => active_link?(administration_path)
     %li
+      = link_to "Check-in", administration_path
+    %li
+      = link_to "Check-out", administration_path
+  %ul.nav.nav-sidebar
+    %h5 Statistics
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Analytics", administration_path
+    %li
       = link_to "Reports", administration_path
     %li
       = link_to "Analytics", administration_path
   %ul.nav.nav-sidebar
+    %h5 Settings
     %li
-      = link_to "Reports", administration_path
+      = link_to "Rate period", administration_path
     %li
-      = link_to "Analytics", administration_path
+      = link_to "Room Setting", administration_path
     %li
-      = link_to "Reports", administration_path
-    %li
-      = link_to "Analytics", administration_path
-  %ul.nav.nav-sidebar
-    %li
-      = link_to "Reports", administration_path
-    %li
-      = link_to "Analytics", administration_path
-    %li
-      = link_to "Reports", administration_path
-    %li
-      = link_to "Settings", setting_path(1), :class => active_link?("/settings")
+      = link_to "Company settings", setting_path(1), :class => active_link?("/settings")
