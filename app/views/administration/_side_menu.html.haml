@@ -1,0 +1,26 @@
+.col-sm-3.col-md-2.sidebar
+  %ul.nav.nav-sidebar
+    %li
+      = link_to "Overview", administration_path, :class => active_link?(administration_path)
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Analytics", administration_path
+  %ul.nav.nav-sidebar
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Analytics", administration_path
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Analytics", administration_path
+  %ul.nav.nav-sidebar
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Analytics", administration_path
+    %li
+      = link_to "Reports", administration_path
+    %li
+      = link_to "Settings", setting_path(1), :class => active_link?("/settings")
