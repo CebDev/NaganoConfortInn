@@ -3,3 +3,21 @@
     =render "administration/side_menu"
     .col-sm-9.col-md-10.main
       %h1 New rate periods
+
+      .panel.panel-default
+        .panel-body
+          = form_for @rate_period, :html => {:class => "form-horizontal"} do |f|
+            .form-group
+              = f.label :title, "Title", values:@rate_period.title, class: "col-sm-2 control-label"
+              .col-sm-10
+                = f.text_field :title, class: "form-control"
+            .form-group
+              =f.label :date_from, class: "col-sm-2 control-label"
+              .col-sm-4
+                =f.text_field :date_from, id: "datepicker", class: "form-control"
+
+            .form-group
+              .col-sm-10
+              .col-sm-2
+                = submit_tag("Create", class: "btn btn-primary btn-lg btn-block")
+
