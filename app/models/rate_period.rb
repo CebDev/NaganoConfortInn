@@ -1,3 +1,2 @@
-class Rate_period < ActiveRecord::Base
-
+class RatePeriod < ActiveRecord::Base
 end

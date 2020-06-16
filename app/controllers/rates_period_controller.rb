@@ -1,2 +1,0 @@
-class RatesPeriodController < ApplicationController
-end
