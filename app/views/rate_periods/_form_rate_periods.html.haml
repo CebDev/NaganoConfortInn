@@ -1,0 +1,38 @@
+.panel.panel-default
+  .panel-body
+    = form_for @rate_period, :html => {:class => "form-horizontal"} do |f|
+      .form-group
+        = f.label :title, "Title", values:@rate_period.title, class: "col-sm-2 control-label"
+        .col-sm-10
+          = f.text_field :title, class: "form-control"
+      .form-group
+        =f.label :date_from, class: "col-sm-2 control-label"
+        .col-sm-3
+          =f.text_field :date_from, id: "datepicker-from", class: "form-control"
+      .form-group
+        =f.label :date_to, class: "col-sm-2 control-label"
+        .col-sm-3
+          =f.text_field :date_to, id: "datepicker-to", class: "form-control"
+      .panel.panel-default
+        .panel-heading Pricing
+        .panel-body
+          .form-group
+            =f.label :over_rate_percentage, "Percentage", class: "col-sm-2 control-label"
+            .col-sm-3
+              =f.text_field :over_rate_percentage, class: "form-control", placeholder: "%"
+          .form-group
+            =f.label :over_rate_dollar, "Dollar", class: "col-sm-2 control-label"
+            .col-sm-3
+              =f.text_field :over_rate_dollar, class: "form-control", placeholder: "$"
+          %p You can set the rate in percent or dollar.
+          %p Any negative value will discount the rate
+          %p Take care that if they are mutliple rate periods for the same price the lower rice will we apply to your customers
+      .form-group
+        .col-sm-10
+        .col-sm-2
+          = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
+  - if @rate_period.errors.any?
+    %h2 The following errors appear on save
+    - @rate_period.errors.full_messages.each do |msg|
+      .alert.alert-danger
+        = msg

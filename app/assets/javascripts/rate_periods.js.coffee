@@ -5,7 +5,5 @@
 
 
 $(document).ready ->
-  $('#datepicker-from').datepicker(dateFormat: 'dd/mm/yy')
-  dateFormat: 'yy-mm-dd'
-  $('#datepicker-to').datepicker(dateFormat: 'dd/mm/yy')
-  dateFormat: 'yy-mm-dd'
+  $('#datepicker-from').datepicker(dateFormat: 'yy-mm-dd')
+  $('#datepicker-to').datepicker(dateFormat: 'yy-mm-dd')

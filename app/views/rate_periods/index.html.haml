@@ -3,6 +3,9 @@
     =render "administration/side_menu"
     .col-sm-9.col-md-10.main
       %h1 List of rate periods
+      - flash.each do |name, msg|
+        .alert.alert-success
+          = msg
       %table.table
         %thead
           %tr
@@ -26,9 +29,8 @@
                   = rate_period.over_rate_dollar.to_s + "$"
               %td Now
               %td
-                %button.btn.btn-default Edit
+                = link_to "Edit", edit_rate_period_path(rate_period.id), :class => "btn btn-default"
                 %button.btn.btn-default Archive
-
           %tr
             %td{:colspan => 5}
             %td

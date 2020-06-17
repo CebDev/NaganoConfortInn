@@ -17,11 +17,21 @@
   .btn{
     width: 49%;
   }
-
   .btn-lg{
     width: 100%;
   }
 }
+
+.form-group{
+  h4{
+    text-align: center;
+  }
+  h5{
+    text-align: right;
+    font-weight: bold;
+  }
+}
+
 .ui-datepicker{
   background-color: #eee;
   font-size: 20px;
