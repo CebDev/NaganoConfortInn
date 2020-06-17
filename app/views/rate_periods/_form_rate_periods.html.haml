@@ -24,9 +24,16 @@
             =f.label :over_rate_dollar, "Dollar", class: "col-sm-2 control-label"
             .col-sm-3
               =f.text_field :over_rate_dollar, class: "form-control", placeholder: "$"
+          %h6 NOTICE
           %p You can set the rate in percent or dollar.
           %p Any negative value will discount the rate
-          %p Take care that if they are mutliple rate periods for the same price the lower rice will we apply to your customers
+          %p Take care that if they are mutliple rate periods for the same date the lower price will we apply to your customers
+      - if request.path.include? "edit"
+        .form-group
+          .col-sm-10
+          .col-sm-2
+            =f.check_box :archived, class: "form-check-input"
+            =f.label :archived, class: "form-check-label"
       .form-group
         .col-sm-10
         .col-sm-2

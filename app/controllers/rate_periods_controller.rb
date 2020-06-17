@@ -28,7 +28,17 @@ class RatePeriodsController < ApplicationController
   # update method will archive the current rate period and create a new one
   # to keep the historic
   def update
-
+    # @rate_period = RatePeriod.find(params[:id])
+    # @rate_period.update( archived: true)
+    # @rate_period.archived = params[:rate_period].archived
+    #
+    # if @rate_period.update_attributes(params[:rate_period])
+    #   flash[:notice] = "Your settings were updated successfully."
+    #   redirect_to rate_periods_path
+    # else
+    #   @btn_text = "Edit"
+    #   render 'settings/edit'
+    # end
 
 
   end

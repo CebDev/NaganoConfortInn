@@ -11,14 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20200616171740) do
+ActiveRecord::Schema.define(:version => 20200617141943) do
 
   create_table "rate_periods", :force => true do |t|
-    t.string "title"
-    t.date   "date_from"
-    t.date   "date_to"
-    t.float  "over_rate_percentage"
-    t.float  "over_rate_dollar"
+    t.string  "title"
+    t.date    "date_from"
+    t.date    "date_to"
+    t.float   "over_rate_percentage"
+    t.float   "over_rate_dollar"
+    t.boolean "archived",             :default => false
   end
 
   create_table "room_types", :force => true do |t|
