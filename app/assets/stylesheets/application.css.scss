@@ -19,10 +19,20 @@
  *= require jquery-ui
  */
 
-
 .navbar{
   border-radius: 0;
   margin-bottom: 0;
+}
+
+.footer{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding-top: 5px;
+  background-color: #222;
+  text-align: center;
+  color: #eee;
 }
 
 
