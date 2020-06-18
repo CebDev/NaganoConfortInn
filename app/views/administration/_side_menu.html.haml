@@ -18,10 +18,12 @@
     %li
       = link_to "Analytics", administration_path
   %ul.nav.nav-sidebar
-    %h5 Settings
+    %h5 Room settings
     %li
       = link_to "Rate period", room_pricings_path, :class => active_link?("/room_pricing")
     %li
-      = link_to "Room settings", administration_path
+      = link_to "Room settings", room_types_path, :class => active_link?("/room_type")
+  %ul.nav.nav-sidebar
+    %h5 General settings
     %li
       = link_to "Company settings", setting_path(1), :class => active_link?("/settings")

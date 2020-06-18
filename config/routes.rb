@@ -2,7 +2,10 @@ NaganoConforInn::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :settings, :room_type, :room_pricings
+  resources :settings, :room_pricings
+
+  resource :room_types, only: [:show, :create]
+  resource :room_views, only: [:create]
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
