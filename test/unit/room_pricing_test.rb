@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class RatePeriodsControllerTest < ActionController::TestCase
+class RoomPricingTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

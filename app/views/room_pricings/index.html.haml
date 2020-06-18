@@ -14,22 +14,22 @@
             %th to
             %th{:colspan => 3} Rate
         %tbody
-          - @rate_periods.each do |rate_period|
+          - @room_pricings.each do |room_price|
             %tr
               %td
-                = rate_period.title
+                = room_price.title
               %td
-                = rate_period.date_from
+                = room_price.date_from
               %td
-                = rate_period.date_to
-              %td{:class => class_from_value(rate_period.over_rate_percentage, rate_period.over_rate_dollar)}
-                - if rate_period.over_rate_percentage
-                  = rate_period.over_rate_percentage.to_s + "%"
+                = room_price.date_to
+              %td{:class => class_from_value(room_price.over_rate_percentage, room_price.over_rate_dollar)}
+                - if room_price.over_rate_percentage
+                  = room_price.over_rate_percentage.to_s + "%"
                 - else
-                  = rate_period.over_rate_dollar.to_s + "$"
+                  = room_price.over_rate_dollar.to_s + "$"
               %td Now
               %td
-                = link_to "Edit", edit_rate_period_path(rate_period.id), :class => "btn btn-default"
+                = link_to "Edit", edit_rate_period_path(room_price.id), :class => "btn btn-default"
                 %button.btn.btn-default Archive
           %tr
             %td{:colspan => 5}

@@ -1,8 +1,8 @@
 .panel.panel-default
   .panel-body
-    = form_for @rate_period, :html => {:class => "form-horizontal"} do |f|
+    = form_for @room_pricing, :html => {:class => "form-horizontal"} do |f|
       .form-group
-        = f.label :title, "Title", values:@rate_period.title, class: "col-sm-2 control-label"
+        = f.label :title, "Title", values:@room_pricing.title, class: "col-sm-2 control-label"
         .col-sm-10
           = f.text_field :title, class: "form-control"
       .form-group
@@ -38,8 +38,8 @@
         .col-sm-10
         .col-sm-2
           = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
-  - if @rate_period.errors.any?
+  - if @room_pricing.errors.any?
     %h2 The following errors appear on save
-    - @rate_period.errors.full_messages.each do |msg|
+    - @room_pricing.errors.full_messages.each do |msg|
       .alert.alert-danger
         = msg

@@ -5,7 +5,7 @@ class SettingsController < ApplicationController
 
   def show
     @section_title = set_section_title ""
-    redirect_to new_setting_path unless @setting
+    redirect_to new_roomPricing_path unless @setting
   end
 
   def new
@@ -21,7 +21,7 @@ class SettingsController < ApplicationController
     @setting = Setting.new(params[:setting])
     if @setting.save
       flash[:notice] = "Your settings were saved successfully."
-      redirect_to setting_path(1)
+      redirect_to roomPricing_path(1)
     else
       @section_title = set_section_title "create your profile"
       render 'settings/new'
@@ -31,7 +31,7 @@ class SettingsController < ApplicationController
   def update
     if @setting.update_attributes(params[:setting])
       flash[:notice] = "Your settings were updated successfully."
-      redirect_to setting_path
+      redirect_to roomPricing_path
     else
       @section_title = set_section_title "edit your profile"
       render 'settings/edit'

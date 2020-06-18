@@ -2,7 +2,7 @@ NaganoConforInn::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :settings, :rate_periods
+  resources :settings, :room_type, :room_pricings
   # Sample of regular route:
   #   match 'products/:id' => 'catalog#view'
   # Keep in mind you can assign values other than :controller and :action
@@ -12,10 +12,10 @@ NaganoConforInn::Application.routes.draw do
   # This route can be invoked with purchase_url(:id => product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
-  #   resources :products
+  #   RoomPricings :products
 
   # Sample resource route with options:
-  #   resources :products do
+  #   RoomPricings :products do
   #     member do
   #       get 'short'
   #       post 'toggle'
@@ -26,16 +26,16 @@ NaganoConforInn::Application.routes.draw do
   #     end
   #   end
 
-  # Sample resource route with sub-resources:
-  #   resources :products do
-  #     resources :comments, :sales
+  # Sample resource route with sub-RoomPricings:
+  #   RoomPricings :products do
+  #     RoomPricings :comments, :sales
   #     resource :seller
   #   end
 
-  # Sample resource route with more complex sub-resources
-  #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  # Sample resource route with more complex sub-RoomPricings
+  #   RoomPricings :products do
+  #     RoomPricings :comments
+  #     RoomPricings :sales do
   #       get 'recent', :on => :collection
   #     end
   #   end
@@ -44,7 +44,7 @@ NaganoConforInn::Application.routes.draw do
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
   #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
+  #     RoomPricings :products
   #   end
 
   # You can have the root of your site routed with "root"

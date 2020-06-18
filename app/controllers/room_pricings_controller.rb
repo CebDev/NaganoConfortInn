@@ -1,38 +1,38 @@
-class RatePeriodsController < ApplicationController
+class RoomPricingsController < ApplicationController
   before_filter :set_title
 
   def index
-    @rate_periods = RatePeriod.all
+    @room_pricings = RoomPricing.all
   end
 
   def new
     @btn_text = "Create"
-    @rate_period = RatePeriod.new
+    @room_pricing = RoomPricing.new
   end
 
   def create
-    @rate_period = RatePeriod.new(params[:rate_period])
-    if @rate_period.save
+    @room_pricing = RoomPricing.new(params[:room_pricing])
+    if @room_pricing.save
       flash[:notice] = "Your new rate periods was saved successfully."
       redirect_to rate_periods_path
     else
-      render 'rate_periods/new'
+      render 'room_pricings/new'
     end
   end
 
   def edit
     @btn_text = "Edit"
-    @rate_period = RatePeriod.find(params[:id])
+    @room_pricing = RoomPricing.find(params[:id])
   end
 
   # update method will archive the current rate period and create a new one
   # to keep the historic
   def update
-    # @rate_period = RatePeriod.find(params[:id])
-    # @rate_period.update( archived: true)
-    # @rate_period.archived = params[:rate_period].archived
+    # @room_pricing = RoomPricing.find(params[:id])
+    # @room_pricing.update( archived: true)
+    # @room_pricing.archived = params[:room_pricing].archived
     #
-    # if @rate_period.update_attributes(params[:rate_period])
+    # if @room_pricing.update_attributes(params[:room_pricing])
     #   flash[:notice] = "Your settings were updated successfully."
     #   redirect_to rate_periods_path
     # else

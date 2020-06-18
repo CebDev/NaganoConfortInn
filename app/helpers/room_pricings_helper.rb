@@ -1,4 +1,4 @@
-module RatePeriodsHelper
+module RoomPricingsHelper
 
   def class_from_value (*values)
     values.each do |value|

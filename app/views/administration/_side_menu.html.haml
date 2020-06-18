@@ -20,8 +20,8 @@
   %ul.nav.nav-sidebar
     %h5 Settings
     %li
-      = link_to "Rate period", rate_periods_path, :class => active_link?("/rate_period")
+      = link_to "Rate period", room_pricings_path, :class => active_link?("/room_pricing")
     %li
-      = link_to "Room Setting", administration_path
+      = link_to "Room settings", administration_path
     %li
       = link_to "Company settings", setting_path(1), :class => active_link?("/settings")
