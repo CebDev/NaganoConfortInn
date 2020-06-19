@@ -6,9 +6,10 @@ class CreateRoomPricings < ActiveRecord::Migration
       t.integer :room_view_id
       t.float :price_open_day
       t.float :price_week_end
-      t.timestamp :date_from
-      t.timestamp :date_to
+      t.date :date_from
+      t.date :date_to
       t.timestamp :archived_at
+      t.timestamps
     end
   end
 

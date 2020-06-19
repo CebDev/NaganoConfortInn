@@ -19,31 +19,39 @@ ActiveRecord::Schema.define(:version => 20200618123245) do
     t.integer  "room_view_id"
     t.float    "price_open_day"
     t.float    "price_week_end"
-    t.datetime "date_from"
-    t.datetime "date_to"
+    t.date     "date_from"
+    t.date     "date_to"
     t.datetime "archived_at"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
   create_table "room_types", :force => true do |t|
-    t.string "title"
-    t.text   "description"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "room_views", :force => true do |t|
-    t.string "title"
-    t.text   "description"
+    t.string   "title"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "settings", :force => true do |t|
-    t.string "company_name"
-    t.text   "address"
-    t.string "zip_code"
-    t.string "city"
-    t.string "country"
-    t.string "phone_number"
-    t.string "email"
-    t.float  "tps"
-    t.float  "tvq"
+    t.string   "company_name"
+    t.text     "address"
+    t.string   "zip_code"
+    t.string   "city"
+    t.string   "country"
+    t.string   "phone_number"
+    t.string   "email"
+    t.float    "tps"
+    t.float    "tvq"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

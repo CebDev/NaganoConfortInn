@@ -1,9 +1,13 @@
 class RoomTypesController < ApplicationController
+
   def index
     @room_types = RoomType.all
     @room_views = RoomView.all
     @room_type = RoomType.new
     @room_view = RoomView.new
+  end
+
+  def show
   end
 
   def create

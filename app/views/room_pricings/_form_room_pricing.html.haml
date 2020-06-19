@@ -1,0 +1,46 @@
+- flash.each do |name, msg|
+  .alert.alert-success
+    = msg
+.panel.panel-default
+  .panel-body
+    = form_for @room_pricing, :html => {:class => "form-horizontal"} do |f|
+      .form-group
+        = f.label :title, "Title", values:@room_pricing.title, class: "col-sm-2 control-label"
+        .col-sm-8
+          = f.text_field :title, class: "form-control"
+      .form-group
+        = f.label :room_type_id, "Room type", values: @room_pricing.room_type_id, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.select(:room_type_id, @room_types.collect { |room_type| [room_type.title, room_type.id] }, {}, {class: "form-control"})
+        = f.label :room_view_id, "Room View", values: @room_pricing.room_type_id, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.select(:room_view_id, @room_views.collect { |room_view| [room_view.title, room_view.id] }, {}, {class: "form-control"})
+      .form-group
+        =f.label :date_from, class: "col-sm-2 control-label"
+        .col-sm-3
+          =f.text_field :date_from, id: "datepicker-from", class: "form-control"
+        =f.label :date_to, class: "col-sm-2 control-label"
+        .col-sm-3
+          =f.text_field :date_to, id: "datepicker-to", class: "form-control"
+
+      .panel.panel-default
+        .panel-heading Pricing
+        .panel-body
+          .form-group
+            =f.label :price_open_day, "Open day price", class: "col-sm-2 control-label"
+            .col-sm-3
+              =f.text_field :price_open_day, class: "form-control", placeholder: "$"
+          .form-group
+            =f.label :price_week_end, "Week end price", class: "col-sm-2 control-label"
+            .col-sm-3
+              =f.text_field :price_week_end, class: "form-control", placeholder: "$"
+      .form-group
+        .col-sm-10
+        .col-sm-2
+          = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
+
+- if @room_pricing.errors.any?
+  %h2 The following errors appear on save
+  - @room_pricing.errors.full_messages.each do |msg|
+    .alert.alert-danger
+      = msg

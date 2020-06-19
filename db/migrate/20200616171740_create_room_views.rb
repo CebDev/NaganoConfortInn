@@ -3,6 +3,7 @@ class CreateRoomViews < ActiveRecord::Migration
     create_table :room_views do |t|
       t.string :title
       t.text :description
+      t.timestamps
     end
   end
 

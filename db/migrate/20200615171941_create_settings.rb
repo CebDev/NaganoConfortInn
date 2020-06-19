@@ -10,6 +10,7 @@ class CreateSettings < ActiveRecord::Migration
       t.string :email
       t.float :tps
       t.float :tvq
+      t.timestamps
     end
   end
 

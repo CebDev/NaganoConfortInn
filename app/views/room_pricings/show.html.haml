@@ -1,0 +1,66 @@
+.container-fluid
+  .row
+    = render "administration/side_menu"
+    .col-sm-9.col-md-10.main
+      %h1 Room pricing details
+      .panel.panel-default
+        .panel-body
+          %form.form-horizontal
+            .form-group
+              %label.col-sm-2 Title
+              .col-sm-10
+                .form-control
+                  = @room_pricing.title
+            .form-group
+              %label.col-sm-2 Room type
+              .col-sm-4
+                .form-control
+                  =@room_type.title
+              %label.col-sm-2 Room View
+              .col-sm-4
+                .form-control
+                  =@room_view.title
+            .form-group
+              %label.col-sm-2 Date from
+              .col-sm-4
+                .form-control
+                  =@room_pricing.date_from
+              %label.col-sm-2 Date to
+              .col-sm-4
+                .form-control
+                  =@room_pricing.date_to
+            .panel.panel-default
+              .panel-heading Pricing
+              .panel-body
+                .form-group
+                  %label.col-sm-2.control-label Open day price
+                  .col-sm-4
+                    .form-control
+                      = "$ #{@room_pricing.price_open_day}"
+                  %label.col-sm-2.control-label Week end price
+                  .col-sm-4
+                    .form-control
+                      = "$ #{@room_pricing.price_week_end}"
+            .form-group
+              .col-sm-10
+              .col-sm-2
+                = submit_tag("Edit", class: "btn btn-primary btn-lg btn-block")
+      .panel.panel-default
+        .panel-body
+          %h2 Attached rooms
+          %table.table
+            %thead
+              %tr
+                %th Room number
+                %th Floor
+                %th Capacity
+                %th Status
+                %th
+            %tbody
+              %tr
+                %td 101
+                %td 1
+                %td 2
+                %td ready
+                %td.t-center
+                  = link_to "Details", room_pricings_path, :class => "btn btn-default"

@@ -2,7 +2,7 @@
   .row
     =render "administration/side_menu"
     .col-sm-9.col-md-10.main
-      %h1 List of rate periods
+      %h1 Room pricing list
       - flash.each do |name, msg|
         .alert.alert-success
           = msg
@@ -10,28 +10,34 @@
         %thead
           %tr
             %th Title
-            %th From
-            %th to
-            %th{:colspan => 3} Rate
+            %th Room type
+            %th Room view
+            %th.t-center Open day price
+            %th.t-center Week-end price
+            %th.t-center From
+            %th.t-center to
+            %th
         %tbody
           - @room_pricings.each do |room_price|
             %tr
               %td
                 = room_price.title
               %td
-                = room_price.date_from
+                = room_price.room_type.title
               %td
-                = room_price.date_to
-              %td{:class => class_from_value(room_price.over_rate_percentage, room_price.over_rate_dollar)}
-                - if room_price.over_rate_percentage
-                  = room_price.over_rate_percentage.to_s + "%"
-                - else
-                  = room_price.over_rate_dollar.to_s + "$"
-              %td Now
+                = room_price.room_view.title
+              %td.td-price
+                = "$ #{room_price.price_open_day}"
+              %td.td-price
+                = "$ #{room_price.price_week_end}"
+              %td.t-center
+                = room_price.date_from.to_s
+              %td.t-center
+                = room_price.date_to.to_s
               %td
-                = link_to "Edit", edit_rate_period_path(room_price.id), :class => "btn btn-default"
+                = link_to "Details", room_pricing_path(room_price.id), :class => "btn btn-default"
                 %button.btn.btn-default Archive
           %tr
-            %td{:colspan => 5}
+            %td{:colspan => 7}
             %td
-              = link_to "New", new_rate_period_path, :class => "btn btn-primary btn-lg"
+              = link_to "New", new_room_pricing_path, :class => "btn btn-primary btn-lg"

@@ -15,12 +15,13 @@
       = link_to "Analytics", administration_path
     %li
       = link_to "Reports", administration_path
-    %li
-      = link_to "Analytics", administration_path
+
   %ul.nav.nav-sidebar
     %h5 Room settings
     %li
-      = link_to "Rate period", room_pricings_path, :class => active_link?("/room_pricing")
+      = link_to "Room manager", administration_path
+    %li
+      = link_to "Pricing", room_pricings_path, :class => active_link?("/room_pricing")
     %li
       = link_to "Room settings", room_types_path, :class => active_link?("/room_type")
   %ul.nav.nav-sidebar
