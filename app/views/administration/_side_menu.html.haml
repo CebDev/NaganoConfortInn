@@ -19,7 +19,7 @@
   %ul.nav.nav-sidebar
     %h5 Room settings
     %li
-      = link_to "Room manager", administration_path
+      = link_to "Room manager", rooms_path, :class => active_link?("/rooms")
     %li
       = link_to "Pricing", room_pricings_path, :class => active_link?("/room_pricing")
     %li
