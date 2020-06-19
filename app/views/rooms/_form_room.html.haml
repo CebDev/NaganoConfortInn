@@ -1,0 +1,39 @@
+- flash.each do |name, msg|
+  .alert.alert-success
+    = msg
+.panel.panel-default
+  .panel-body
+    = form_for @room, :html => {:class => "form-horizontal"} do |f|
+      .form-group
+        = f.label :number, "Room number", values:@room.number, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.text_field :number, class: "form-control"
+      .form-group
+        = f.label :floor, "Floor", values:@room.floor, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.text_field :floor, class: "form-control"
+      .form-group
+        = f.label :room_type_id, "Room type", values: @room.room_type_id, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.select(:room_type_id, @room_types.collect { |room_type| [room_type.title, room_type.id] }, {}, {class: "form-control"})
+        = f.label :room_view_id, "Room View", values: @room.room_type_id, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.select(:room_view_id, @room_views.collect { |room_view| [room_view.title, room_view.id] }, {}, {class: "form-control"})
+      .form-group
+        .form-group
+        = f.label :capacity, "Capacity", values:@room.capacity, class: "col-sm-2 control-label"
+        .col-sm-3
+          = f.text_field :capacity, class: "form-control"
+      .form-group
+        %label Room next : 000
+
+      .form-group
+        .col-sm-10
+        .col-sm-2
+          = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
+
+- if @room.errors.any?
+  %h2 The following errors appear on save
+  - @room.errors.full_messages.each do |msg|
+    .alert.alert-danger
+      = msg

@@ -57,10 +57,13 @@
                 %th Status
                 %th
             %tbody
-              %tr
-                %td 101
-                %td 1
-                %td 2
-                %td ready
-                %td.t-center
-                  = link_to "Details", room_pricings_path, :class => "btn btn-default"
+              - @rooms.each do |room|
+                %tr
+                  %td
+                    = room.number
+                  %td
+                    = room.floor
+                  %td capacity
+                  %td ready
+                  %td.t-center
+                    = link_to "Details", room_pricings_path, :class => "btn btn-default"

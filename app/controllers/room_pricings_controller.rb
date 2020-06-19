@@ -9,6 +9,7 @@ class RoomPricingsController < ApplicationController
     @room_pricing = RoomPricing.find(params[:id])
     @room_type = RoomType.find(@room_pricing.room_type_id)
     @room_view = RoomView.find(@room_pricing.room_view_id)
+    @rooms = Room.where(room_type_id: @room_pricing.room_type_id, room_view_id: @room_pricing.room_view_id).order("number ASC")
   end
 
   def new
