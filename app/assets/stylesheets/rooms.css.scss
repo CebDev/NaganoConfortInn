@@ -2,41 +2,39 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.table{
-  width: 90%;
-  th{
-    width: 50%;
-  }
-  .align-right{
-    text-align: right;
-  }
-  .status{
-    float: right;
-    font-size: 15px;
-    text-align: center;
-    .orange{
-      color: orange;
-    }
-    .green{
-      color: lightgreen;
-    }
-    .red{
-      color: red;
-    }
-  }
-  .panel-default{
-    margin: 0 auto;
-    min-width: 170px;
-    max-width: 250px;
+.table-container{
+  overflow-x: auto;
 
+  .table{
+    th{
+      width: 50%;
+    }
+    .align-right{
+      text-align: right;
+    }
+    .panel-default{
+      margin: 0 auto;
+      min-width: 220px;
+      max-width: 250px;
+    }
   }
 }
 
 
-.red{
-  color: red;
+
+.status{
+  float: right;
+  text-align: center;
   font-size: large;
-  p{
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+  .orange{
+    color: orange;
+  }
+  .green{
+    color: lightgreen;
+  }
+  .red{
+    color: red;
   }
 }
+
+

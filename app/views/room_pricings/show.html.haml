@@ -63,7 +63,9 @@
                     = room.number
                   %td
                     = room.floor
-                  %td capacity
-                  %td ready
+                  %td
+                    = room.capacity
+                  %td
+                    = room.status
                   %td.t-center
                     = link_to "Details", room_path(room), :class => "btn btn-default"

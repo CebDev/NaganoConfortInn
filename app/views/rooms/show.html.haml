@@ -5,8 +5,8 @@
       %h1 Room #{@room.number}
       %hr
       %h3 Status
-      %span{ :class => "glyphicon glyphicon-ok-circle " + set_status_class(@room)}
-        %p " - #{@room.status}"
+      .status
+        = set_status_class(@room)
       %hr
       %h3 Room details
       %table.table
@@ -27,7 +27,7 @@
               %tr
                 %td Open day price: $ #{room_pricing.price_open_day}
                 %td Week-end price: $ #{room_pricing.price_week_end}
-      - else
-        %p Actually, no rate associates with this room. You create one down bellow.
+      - if get_current_room_pricing(@room).length == 0
+        %p Actually, no rate associates with this room. You can create it down bellow.
         = render "room_pricings/form_room_pricing"
 
