@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20200619140249) do
+ActiveRecord::Schema.define(:version => 20200622142615) do
 
   create_table "room_pricings", :force => true do |t|
     t.string   "title"
@@ -46,10 +46,10 @@ ActiveRecord::Schema.define(:version => 20200619140249) do
     t.integer  "room_type_id"
     t.integer  "room_view_id"
     t.integer  "capacity"
-    t.string   "status"
+    t.string   "status",       :default => "Ready"
     t.datetime "archived_at"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                        :null => false
+    t.datetime "updated_at",                        :null => false
   end
 
   create_table "settings", :force => true do |t|
