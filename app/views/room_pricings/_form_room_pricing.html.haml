@@ -43,4 +43,5 @@
   %h2 The following errors appear on save
   - @room_pricing.errors.full_messages.each do |msg|
     .alert.alert-danger
-      = msg
+      %i.fa.fa-exclamation-triangle
+        =msg

@@ -11,12 +11,18 @@
     background-color: #eee;
     vertical-align: middle !important;
   }
+  .inactive{
+    color: #999999;
+  }
   .td-price{
     text-align: center;
     width: 100px;
   }
   td{
     vertical-align: middle !important;
+    .room-pricing-container{
+      height: 50px;
+    }
   }
   .red{
     color: red;
@@ -25,7 +31,7 @@
     color: lightgreen;
   }
   .btn{
-    width: 48%;
+    width: 95%;
   }
   .btn-lg{
     width: 100%;

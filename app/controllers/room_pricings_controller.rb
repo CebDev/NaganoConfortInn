@@ -26,10 +26,9 @@ class RoomPricingsController < ApplicationController
       flash[:notice] = "Your new rate periods was saved successfully."
       redirect_to room_pricings_path
     else
-      @room_pricing = RoomPricing.new(params[:room_pricing])
       @room_types = RoomType.all
       @room_views = RoomView.all
-      render 'room_pricing/new'
+      render 'new'
     end
   end
 

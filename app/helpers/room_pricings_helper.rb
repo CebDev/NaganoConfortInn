@@ -1,11 +1,12 @@
 module RoomPricingsHelper
 
-  def class_from_value (*values)
-    values.each do |value|
-      if value
-        return value <= 0 ? 'green' : 'red'
-      end
-    end
+  def archive_old_room_pricing(room_price)
+    room_price.archived_at = Time.new.strftime("%Y-%m-%d").to_s
+    room_price.save
   end
-  
+
+  def class_archived (room_price)
+    'inactive' if room_price.date_to.to_s < Time.new.strftime("%Y-%m-%d").to_s
+  end
+
 end

@@ -10,6 +10,7 @@
         %thead
           %tr
             %th Title
+            %th
             %th Room type
             %th Room view
             %th.t-center Open day price
@@ -19,9 +20,11 @@
             %th
         %tbody
           - @room_pricings.each do |room_price|
-            %tr
+            %tr{ :class => class_archived(room_price) }
               %td
                 = room_price.title
+              %td
+                = status_message(room_price)
               %td
                 = room_price.room_type.title
               %td
@@ -33,10 +36,11 @@
               %td.t-center
                 = room_price.date_from.to_s
               %td.t-center
+                - if room_price.date_to.to_s < Time.new.strftime("%Y-%m-%d").to_s
+                  - archive_old_room_pricing(room_price)
                 = room_price.date_to.to_s
               %td
                 = link_to "Details", room_pricing_path(room_price.id), :class => "btn btn-default"
-                %button.btn.btn-default Archive
           %tr
             %td{:colspan => 7}
             %td

@@ -1,0 +1,33 @@
+.container-fluid
+  .row
+    =render "administration/side_menu"
+    .col-sm-9.col-md-10.main
+      %h1 Room #{@room.number}
+      %hr
+      %h3 Status
+      %span{ :class => "glyphicon glyphicon-ok-circle " + set_status_class(@room)}
+        %p " - #{@room.status}"
+      %hr
+      %h3 Room details
+      %table.table
+        %tbody
+          %tr
+            %td Room type : #{@room.room_type.title}
+            %td Room view : #{@room.room_view.title}
+      %hr
+      %h3 Room pricing
+      - if get_room_pricing(@room).length > 0
+        - get_room_pricing(@room).each do |room_pricing|
+          %table.table
+            %thead
+              %tr
+                %th #{room_pricing.title} from #{room_pricing.date_from} to #{room_pricing.date_to}
+                %th.align-right #{status_message(room_pricing)}
+            %tbody
+              %tr
+                %td Open day price: $ #{room_pricing.price_open_day}
+                %td Week-end price: $ #{room_pricing.price_week_end}
+      - else
+        %p Actually, no rate associates with this room. You create one down bellow.
+        = render "room_pricings/form_room_pricing"
+

@@ -4,9 +4,39 @@
 
 .table{
   width: 90%;
+  th{
+    width: 50%;
+  }
+  .align-right{
+    text-align: right;
+  }
+  .status{
+    float: right;
+    font-size: 15px;
+    text-align: center;
+    .orange{
+      color: orange;
+    }
+    .green{
+      color: lightgreen;
+    }
+    .red{
+      color: red;
+    }
+  }
   .panel-default{
     margin: 0 auto;
     min-width: 170px;
     max-width: 250px;
+
+  }
+}
+
+
+.red{
+  color: red;
+  font-size: large;
+  p{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
   }
 }

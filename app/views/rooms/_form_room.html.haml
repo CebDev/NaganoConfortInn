@@ -27,13 +27,16 @@
       .form-group
         %label Room next : 000
 
+
       .form-group
         .col-sm-10
         .col-sm-2
           = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
-
 - if @room.errors.any?
-  %h2 The following errors appear on save
+  %h3 The following errors appear on save
   - @room.errors.full_messages.each do |msg|
     .alert.alert-danger
-      = msg
+      %i.fa.fa-exclamation-triangle
+      =msg
+      - if msg == "Room pricing is not set"
+        = link_to "Create the associate rate", new_room_pricing_path

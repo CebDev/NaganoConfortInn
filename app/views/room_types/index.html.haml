@@ -28,7 +28,8 @@
                 %td
                   - @room_type.errors.full_messages.each do |msg|
                     .alert.alert-danger
-                      = msg
+                      %i.fa.fa-exclamation-triangle
+                      =msg
 
       .col-sm-4.col-md-5
         %table.table
@@ -52,5 +53,6 @@
                 %td
                   - @room_view.errors.full_messages.each do |msg|
                     .alert.alert-danger
-                      = msg
+                      %i.fa.fa-exclamation-triangle
+                      =msg
 
