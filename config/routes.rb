@@ -2,7 +2,7 @@ NaganoConforInn::Application.routes.draw do
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
-  resources :settings, :room_pricings, :rooms
+  resources :settings, :room_pricings, :rooms, :reservation_rooms
   resources :room_types, only: [:index, :create]
   resource :room_views, only: [:create]
   # Sample of regular route:

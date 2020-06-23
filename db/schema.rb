@@ -11,7 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20200622142615) do
+ActiveRecord::Schema.define(:version => 20200623152714) do
+
+  create_table "reservation_rooms", :force => true do |t|
+    t.integer  "reservation_id"
+    t.integer  "room_id"
+    t.date     "date_from"
+    t.date     "date_to"
+    t.integer  "room_pricing_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "room_pricings", :force => true do |t|
     t.string   "title"
