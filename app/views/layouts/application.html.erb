@@ -8,7 +8,7 @@
 </head>
 <body>
 <!-- Static navbar -->
-<nav class="navbar navbar-inverse">
+<nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -44,9 +44,9 @@
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
 </nav>
-
-<%= yield %>
-
+<div class="main-container">
+  <%= yield %>
+</div>
 <%= render "layouts/footer" %>
 
 </body>
