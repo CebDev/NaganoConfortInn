@@ -5,8 +5,12 @@ module RoomPricingsHelper
     room_price.save
   end
 
-  def class_archived (room_price)
-    'inactive' if room_price.date_to.to_s < Time.new.strftime("%Y-%m-%d").to_s
+  def status_css_class (room_price)
+    if room_price.date_to.to_s < Time.new.strftime("%Y-%m-%d").to_s
+      'inactive'
+    elsif status_message(room_price) == "Current"
+      'bold'
+    end
   end
 
 end

@@ -6,37 +6,67 @@
     = form_for @room, :html => {:class => "form-horizontal"} do |f|
       .form-group
         = f.label :number, "Room number", values:@room.number, class: "col-sm-2 control-label"
-        .col-sm-3
+        .col-sm-4
           = f.text_field :number, class: "form-control"
       .form-group
         = f.label :floor, "Floor", values:@room.floor, class: "col-sm-2 control-label"
-        .col-sm-3
+        .col-sm-4
           = f.text_field :floor, class: "form-control"
       .form-group
         = f.label :room_type_id, "Room type", values: @room.room_type_id, class: "col-sm-2 control-label"
-        .col-sm-3
+        .col-sm-4
           = f.select(:room_type_id, @room_types.collect { |room_type| [room_type.title, room_type.id] }, {}, {class: "form-control"})
         = f.label :room_view_id, "Room View", values: @room.room_type_id, class: "col-sm-2 control-label"
-        .col-sm-3
+        .col-sm-4
           = f.select(:room_view_id, @room_views.collect { |room_view| [room_view.title, room_view.id] }, {}, {class: "form-control"})
       .form-group
         .form-group
         = f.label :capacity, "Capacity", values:@room.capacity, class: "col-sm-2 control-label"
-        .col-sm-3
+        .col-sm-4
           = f.text_field :capacity, class: "form-control"
       .form-group
-        %label Room next : 000
-
-
+        %label.col-sm-2.control-label Room next : A implementer
+      - if @room.errors.any?
+        - if get_current_room_pricing(@room).length == 0
+          .alert.alert-danger
+            %i.fa.fa-exclamation-triangle
+            Actually, no rate associates with this room. You can create it down bellow.
+          .panel.panel-default
+            .panel-body.form-horizontal
+              = fields_for @room_pricing do |f|
+                .form-group
+                  = f.label :title, "Title", values:@room_pricing.title, class: "col-sm-2 control-label"
+                  .col-sm-8
+                    = f.text_field :title, class: "form-control"
+                .form-group
+                  =f.label :date_from, class: "col-sm-2 control-label"
+                  .col-sm-3
+                    =f.text_field :date_from, id: "datepicker-from", class: "form-control"
+                  =f.label :date_to, class: "col-sm-2 control-label"
+                  .col-sm-3
+                    =f.text_field :date_to, id: "datepicker-to", class: "form-control"
+                  = f.hidden_field :room_type_id, values: @room.room_type_id
+                  = f.hidden_field :room_view_id, values: @room.room_view_id
+                .panel.panel-default
+                  .panel-heading Pricing
+                  .panel-body
+                    .form-group
+                      =f.label :price_open_day, "Open day price", class: "col-sm-2 control-label"
+                      .col-sm-3
+                        =f.text_field :price_open_day, class: "form-control", placeholder: "$"
+                    .form-group
+                      =f.label :price_week_end, "Week end price", class: "col-sm-2 control-label"
+                      .col-sm-3
+                        =f.text_field :price_week_end, class: "form-control", placeholder: "$"
       .form-group
-        .col-sm-10
-        .col-sm-2
+        .col-sm-8
+        .col-sm-4
           = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
 - if @room.errors.any?
   %h3 The following errors appear on save
   - @room.errors.full_messages.each do |msg|
-    .alert.alert-danger
-      %i.fa.fa-exclamation-triangle
-      =msg
-      - if msg == "Room pricing is not set"
-        = link_to "Create the associate rate", new_room_pricing_path
+    - if msg != "Room pricing is not set"
+      .alert.alert-danger
+        %i.fa.fa-exclamation-triangle
+        =msg
+

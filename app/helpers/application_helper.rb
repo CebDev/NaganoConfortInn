@@ -1,7 +1,9 @@
 module ApplicationHelper
 
-  def active_link? (test_path)
-    'active' if request.path.include?test_path
+  def active_link? (*test_paths)
+    test_paths.each do |test_path|
+      return 'active' if request.path == test_path
+    end
   end
 
   def status_message (room_price)
