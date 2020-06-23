@@ -22,7 +22,7 @@
                     %h3
                       = "Room #{room.number}"
                       .status
-                        = set_status_class(room)
+                        = room_status(room)
                   .panel-body
                     %h4
                       = "Type: #{room.room_type.title}"
@@ -36,7 +36,7 @@
                     .room-pricing-container
                       %p
                         - if get_current_room_pricing(room).length == 0
-                          = link_to "No rate is associate", room_path(room), :class => "red"
+                          = link_to "No rate associates", room_path(room), :class => "red"
                         - else
                           - get_current_room_pricing(room).each do |room_pricing|
                             = link_to room_pricing.title, room_pricing_path(room_pricing)

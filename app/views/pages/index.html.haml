@@ -9,10 +9,10 @@
         .form-group
           = f.label :company_name, "Check in", values: @setting.company_name, class: "col-sm-2 control-label"
           .col-sm-4
-            = f.text_field :company_name, class: "form-control"
+            =f.text_field :company_name, id: "datepicker-from", class: "form-control"
           = f.label :company_name, "Check out", values: @setting.company_name, class: "col-sm-2 control-label"
           .col-sm-4
-            = f.text_field :company_name, class: "form-control"
+            = f.text_field :company_name, id: "datepicker-to", class: "form-control"
         .form-group
           = f.label :company_name, "Number of rooms", values: @setting.company_name, class: "col-sm-2 control-label"
           .col-sm-4

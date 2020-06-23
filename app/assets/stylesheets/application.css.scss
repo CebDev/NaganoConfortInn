@@ -19,6 +19,7 @@
 
 /*
  *= require jquery-ui
+ *= require google_charts
  */
 
 .navbar{
@@ -35,6 +36,21 @@
   background-color: #222;
   text-align: center;
   color: #eee;
+}
+
+.ui-datepicker{
+  padding: 20px;
+  background-color: #eee;
+  font-size: 20px;
+  .ui-datepicker-header{
+    padding: 5px 10px;
+    .ui-datepicker-next{
+      float: right;
+    }
+  }
+  th{
+    padding: 5px;
+  }
 }
 
 

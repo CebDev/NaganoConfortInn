@@ -8,8 +8,10 @@ class Room < ActiveRecord::Base
   validate :room_pricing_exist
 
   def room_pricing_exist
-    room_pricing = RoomPricing.where( :room_type_id=> room_type_id, :room_view_id => room_view_id, archived_at: nil)
-    if room_pricing.length == 0
+    if RoomPricing
+           .where("date_from <= DATE('now') AND date_to >= DATE('now')")
+           .where(room_view_id: room_view_id, room_type_id: room_type_id, archived_at: nil)
+           .length == 0
       errors.add("Room pricing", "is not set")
     end
   end

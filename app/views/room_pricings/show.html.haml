@@ -44,7 +44,7 @@
             .form-group
               .col-sm-10
               .col-sm-2
-                = submit_tag("Edit", class: "btn btn-primary btn-lg btn-block")
+                =link_to "Edit", edit_room_pricing_path(@room_pricing), class: "btn btn-primary btn-lg btn-block"
       .panel.panel-default
         .panel-body
           %h2 Attached rooms

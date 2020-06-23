@@ -39,6 +39,19 @@ class RoomPricingsController < ApplicationController
     @room_views = RoomView.all
   end
 
+  def update
+    @room_pricing = RoomPricing.find(params[:id])
+    if @room_pricing.update_attributes(params[:room_pricing])
+      flash[:notice] = "Room pricing was updated successfully."
+      redirect_to room_pricings_path
+    else
+      @btn_text = "Edit"
+      @room_types = RoomType.all
+      @room_views = RoomView.all
+      render 'settings/edit'
+    end
+  end
+
   private
 
   def set_title

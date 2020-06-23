@@ -10,6 +10,7 @@ gem 'haml', '~> 4.0.7'
 gem 'bootstrap-sass', '~> 3.2.0'
 gem 'jquery-ui-rails', '~> 4.0', '>= 4.0.3.0'
 gem "font-awesome-rails"
+gem 'googlecharts', '~> 1.6', '>= 1.6.12'
 
 
 # Gems used only for assets and not required
