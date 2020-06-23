@@ -1,0 +1,20 @@
+%h1 List room TEST
+
+- @rooms.each do |room|
+  %div
+    %p
+      = room.number
+    %p
+      = room.room_type.title
+    %p
+      = room.room_view.title
+    %p
+      Today price :
+      = get_price_per_night("2020-06-26" , room)
+    %p
+      Week-end price :
+      = get_price_per_night("2020-06-27" , room)
+    %p
+      Stay price :
+      = get_price_per_stay("2020-06-26", "2020-06-28" , room)
+  %hr

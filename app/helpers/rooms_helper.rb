@@ -18,13 +18,6 @@ module RoomsHelper
 
   end
 
-  def get_current_room_pricing (room)
-    RoomPricing
-        .where("date_from <= DATE('now') AND date_to >= DATE('now')")
-        .where(room_view_id: room.room_view_id, room_type_id: room.room_type_id, archived_at: nil)
-
-  end
-
   def get_room_pricing (room)
     RoomPricing.where(room_view_id: room.room_view_id, room_type_id: room.room_type_id, archived_at: nil)
   end

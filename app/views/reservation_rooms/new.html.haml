@@ -1,1 +1,27 @@
-%h1 New reservation
+%h1 New reservation TEST
+
+= form_for @reservation_room, :html => {:class => "form-horizontal"} do |f|
+  .form-group
+    = f.label :reservation_id, "Reservation id", values:@reservation_room.reservation_id, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.text_field :reservation_id, class: "form-control"
+  .form-group
+    = f.label :room_id, "Room id", values: @reservation_room.room_id, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.select(:room_id, @rooms.collect { |room| [room.number, room.id] }, {}, {class: "form-control"})
+  .form-group
+    =f.label :date_from, class: "col-sm-2 control-label"
+    .col-sm-3
+      =f.text_field :date_from, id: "datepicker-from", class: "form-control"
+    =f.label :date_to, class: "col-sm-2 control-label"
+    .col-sm-3
+      =f.text_field :date_to, id: "datepicker-to", class: "form-control"
+  .form-group
+    = f.label :room_pricing_id, "Room pricing id", values:@reservation_room.room_pricing_id, class: "col-sm-2 control-label"
+    .col-sm-8
+      = f.text_field :room_pricing_id, class: "form-control"
+
+  .form-group
+    .col-sm-10
+    .col-sm-2
+      = submit_tag(@btn_text, class: "btn btn-primary btn-lg btn-block")
