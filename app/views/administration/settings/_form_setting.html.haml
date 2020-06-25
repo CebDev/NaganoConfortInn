@@ -41,10 +41,3 @@
         .col-sm-10
         .col-sm-2
           = submit_tag("Save", class: "btn btn-primary btn-lg btn-block")
-
-- if @setting.errors.any?
-  %h2 The following errors appear on save
-  - @setting.errors.full_messages.each do |msg|
-    .alert.alert-danger
-      = msg
-

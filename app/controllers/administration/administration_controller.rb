@@ -1,4 +1,6 @@
-class AdministrationController < ApplicationController
+class Administration::AdministrationController < ApplicationController
+  layout "administration"
+
   def index
     @title = 'NCI administration'
     @nbr_total_room = Room.all.length

@@ -1,5 +1,7 @@
 class Administration::SettingsController < ApplicationController
 
+  layout "administration"
+
   before_filter :set_setting, only: [:show, :edit, :update]
   before_filter :set_title
 

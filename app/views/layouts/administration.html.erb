@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @title %></title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <%= render "layouts/nav_bar" %>
+  <div class="main-container">
+    <div class="container-fluid">
+      <div class ="row">
+        <%= render "administration/administration/side_menu" %>
+        <div class="col-sm-9 col-md-10 main">
+          <%= yield %>
+          <% flash.each do |name, msg| %>
+            <div class="alert alert-success" >
+              <%= msg %>
+            </div>
+          <% end %>
+          <% if @setting.errors.any? %>
+            <h2>The following errors appear on save</h2>
+            <% @setting.errors.full_messages.each do |msg| %>
+              <div class="alert alert-danger">
+                <%= msg %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= render "layouts/footer" %>
+
+</body>
+</html>

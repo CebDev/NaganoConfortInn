@@ -1,61 +1,54 @@
-.container-fluid
-  .row
-    =render "administration/side_menu"
-    .col-sm-9.col-md-10.main
-      %h1
-        = @section_title
-      .panel.panel-default
-        .panel-body
-          %form.form-horizontal
-            .form-group
-              %label.col-sm-2.control-label Company Name
-              .col-sm-10
-                .form-control
-                  = @setting.company_name
-            .form-group
-              %label.col-sm-2.control-label Address
-              .col-sm-10
-                .form-control
-                  = @setting.address
-            .form-group
-              %label.col-sm-2.control-label Zip code
-              .col-sm-2
-                .form-control
-                  = @setting.zip_code
-            .form-group
-              %label.col-sm-2.control-label City
-              .col-sm-4
-                .form-control
-                  = @setting.city
-            .form-group
-              %label.col-sm-2.control-label Country
-              .col-sm-4
-                .form-control
-                  = @setting.country
-            .form-group
-              %label.col-sm-2.control-label Phone number
-              .col-sm-4
-                .form-control
-                  = @setting.phone_number
-            .form-group
-              %label.col-sm-2.control-label E-mail address
-              .col-sm-4
-                .form-control
-                  = @setting.email
-            .form-group
-              %label.col-sm-2.control-label TPS rate
-              .col-sm-2
-                .form-control
-                  = @setting.tps
-            .form-group
-              %label.col-sm-2.control-label TVQ rate
-              .col-sm-2
-                .form-control
-                  = @setting.tvq
-            .form-group
-              .col-sm-10
-              .col-sm-2
-                = link_to "Edit", edit_administration_setting_path(1), :class => "btn btn-primary btn-lg btn-block"
-      - flash.each do |name, msg|
-        .alert.alert-success
-          = msg
+%h1
+  = @section_title
+.panel.panel-default
+  .panel-body
+    %form.form-horizontal
+      .form-group
+        %label.col-sm-2.control-label Company Name
+        .col-sm-10
+          .form-control
+            = @setting.company_name
+      .form-group
+        %label.col-sm-2.control-label Address
+        .col-sm-10
+          .form-control
+            = @setting.address
+      .form-group
+        %label.col-sm-2.control-label Zip code
+        .col-sm-2
+          .form-control
+            = @setting.zip_code
+      .form-group
+        %label.col-sm-2.control-label City
+        .col-sm-4
+          .form-control
+            = @setting.city
+      .form-group
+        %label.col-sm-2.control-label Country
+        .col-sm-4
+          .form-control
+            = @setting.country
+      .form-group
+        %label.col-sm-2.control-label Phone number
+        .col-sm-4
+          .form-control
+            = @setting.phone_number
+      .form-group
+        %label.col-sm-2.control-label E-mail address
+        .col-sm-4
+          .form-control
+            = @setting.email
+      .form-group
+        %label.col-sm-2.control-label TPS rate
+        .col-sm-2
+          .form-control
+            = @setting.tps
+      .form-group
+        %label.col-sm-2.control-label TVQ rate
+        .col-sm-2
+          .form-control
+            = @setting.tvq
+      .form-group
+        .col-sm-10
+        .col-sm-2
+          = link_to "Edit", edit_administration_setting_path(1), :class => "btn btn-primary btn-lg btn-block"
