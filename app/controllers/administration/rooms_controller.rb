@@ -1,4 +1,4 @@
-class RoomsController < ApplicationController
+class Administration::RoomsController < ApplicationController
 
   def index
     @rooms = Room.order("floor ASC, number ASC")
@@ -35,7 +35,7 @@ class RoomsController < ApplicationController
     if @room.valid?
       @room.save
       flash[:notice] = "Your new room was created successfully."
-      redirect_to rooms_path
+      redirect_to administration_room_path
     else
       @btn_text = "Create"
       @room_pricing = RoomPricing.new(room_type_id: @room.room_type_id,

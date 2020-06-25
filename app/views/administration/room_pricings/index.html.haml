@@ -40,8 +40,8 @@
                   - archive_old_room_pricing(room_price)
                 = room_price.date_to.to_s
               %td
-                = link_to "Details", room_pricing_path(room_price.id), :class => "btn btn-default"
+                = link_to "Details", administration_room_pricing_path(room_price.id), :class => "btn btn-default"
           %tr
             %td{:colspan => 7}
             %td
-              = link_to "New", new_room_pricing_path, :class => "btn btn-primary btn-lg"
+              = link_to "New", new_administration_room_pricing_path, :class => "btn btn-primary btn-lg"

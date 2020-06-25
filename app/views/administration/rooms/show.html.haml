@@ -29,5 +29,5 @@
                 %td Week-end price: $ #{room_pricing.price_week_end}
       - if get_current_room_pricing(@room).length == 0
         %p Actually, no rate associates with this room. You can create it down bellow.
-        = render "room_pricings/form_room_pricing"
+        = render "administration/room_pricings/form_room_pricing"
 

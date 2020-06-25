@@ -1,13 +1,18 @@
 NaganoConforInn::Application.routes.draw do
-  # The priority is based upon order of creation:
-  # first created -> highest priority.
 
-  resources :settings, :room_pricings, :rooms, :reservation_rooms
-  resources :room_types, only: [:index, :create]
-  resource :room_views, only: [:create]
-  # Sample of regular route:
-  #   match 'products/:id' => 'catalog#view'
-  # Keep in mind you can assign values other than :controller and :action
+
+  namespace :administration do
+    # routes en lien avec l'administration
+    resources :room_pricings, :rooms, only: [:index, :show, :edit, :update, :new, :create]
+    resources :settings, only: [:show, :edit, :update, :new, :create]
+    resources :room_types, only: [:index, :create]
+    resource :room_views, only: [:create]
+
+  end
+
+  resources :reservation_rooms
+  # resources :room_types, only: [:index, :create]
+  # resource :room_views, only: [:create]
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase

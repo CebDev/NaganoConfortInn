@@ -36,13 +36,13 @@
                     .room-pricing-container
                       %p
                         - if get_current_room_pricing(room).length == 0
-                          = link_to "No rate associates", room_path(room), :class => "red"
+                          = link_to "No rate associates", administration_room_path(room), :class => "red"
                         - else
                           - get_current_room_pricing(room).each do |room_pricing|
-                            = link_to room_pricing.title, room_pricing_path(room_pricing)
+                            = link_to room_pricing.title, administration_room_pricing_path(room_pricing)
                             %br
                             Open day price = $ #{room_pricing.price_open_day}
                             %br
                             Week-end price = $ #{room_pricing.price_week_end}
                   .panel-footer
-                    = link_to "Details", room_path(room), :class => "btn btn-default btn-sm btn-block"
+                    = link_to "Details", administration_room_path(room), :class => "btn btn-default btn-sm btn-block"

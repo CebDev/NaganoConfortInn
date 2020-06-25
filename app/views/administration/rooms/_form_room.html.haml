@@ -3,7 +3,7 @@
     = msg
 .panel.panel-default
   .panel-body
-    = form_for @room, :html => {:class => "form-horizontal"} do |f|
+    = form_for [:administration, @room], :html => {:class => "form-horizontal"} do |f|
       .form-group
         = f.label :number, "Room number", values:@room.number, class: "col-sm-2 control-label"
         .col-sm-4

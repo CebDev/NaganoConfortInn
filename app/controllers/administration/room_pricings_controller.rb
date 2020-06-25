@@ -1,5 +1,6 @@
-class RoomPricingsController < ApplicationController
+class Administration::RoomPricingsController < ApplicationController
   before_filter :set_title
+  before_filter :get_all_room_types, :get_all_room_views, only: [:new, :create, :edit, :update]
 
   def index
     @room_pricings = RoomPricing.order("date_from DESC")
@@ -7,16 +8,12 @@ class RoomPricingsController < ApplicationController
 
   def show
     @room_pricing = RoomPricing.find(params[:id])
-    @room_type = RoomType.find(@room_pricing.room_type_id)
-    @room_view = RoomView.find(@room_pricing.room_view_id)
-    @rooms = Room.where(room_type_id: @room_pricing.room_type_id, room_view_id: @room_pricing.room_view_id).order("number ASC")
+    @rooms = @room_pricing.get_matching_rooms.order("number ASC")
   end
 
   def new
     @btn_text = "Create"
     @room_pricing = RoomPricing.new
-    @room_types = RoomType.all
-    @room_views = RoomView.all
   end
 
 
@@ -24,10 +21,8 @@ class RoomPricingsController < ApplicationController
     @room_pricing = RoomPricing.new(params[:room_pricing])
     if @room_pricing.save
       flash[:notice] = "Your new rate periods was saved successfully."
-      redirect_to room_pricings_path
+      redirect_to administration_room_pricings_path
     else
-      @room_types = RoomType.all
-      @room_views = RoomView.all
       render 'new'
     end
   end
@@ -35,20 +30,16 @@ class RoomPricingsController < ApplicationController
   def edit
     @btn_text = "Edit"
     @room_pricing = RoomPricing.find(params[:id])
-    @room_types = RoomType.all
-    @room_views = RoomView.all
   end
 
   def update
     @room_pricing = RoomPricing.find(params[:id])
     if @room_pricing.update_attributes(params[:room_pricing])
       flash[:notice] = "Room pricing was updated successfully."
-      redirect_to room_pricings_path
+      redirect_to administration_room_pricings_path
     else
       @btn_text = "Edit"
-      @room_types = RoomType.all
-      @room_views = RoomView.all
-      render 'settings/edit'
+      render 'administration/room_pricings/edit'
     end
   end
 
@@ -56,6 +47,14 @@ class RoomPricingsController < ApplicationController
 
   def set_title
     @title = "NCI Room settings"
+  end
+
+  def get_all_room_types
+    @room_types = RoomType.all
+  end
+
+  def get_all_room_views
+    @room_views = RoomView.all
   end
 
 end

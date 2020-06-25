@@ -15,11 +15,11 @@
               %label.col-sm-2 Room type
               .col-sm-4
                 .form-control
-                  =@room_type.title
+                  = @room_pricing.room_type.title
               %label.col-sm-2 Room View
               .col-sm-4
                 .form-control
-                  =@room_view.title
+                  = @room_pricing.room_view.title
             .form-group
               %label.col-sm-2 Date from
               .col-sm-4
@@ -44,7 +44,7 @@
             .form-group
               .col-sm-10
               .col-sm-2
-                =link_to "Edit", edit_room_pricing_path(@room_pricing), class: "btn btn-primary btn-lg btn-block"
+                =link_to "Edit", edit_administration_room_pricing_path(@room_pricing), class: "btn btn-primary btn-lg btn-block"
       .panel.panel-default
         .panel-body
           %h2 Attached rooms
@@ -68,4 +68,4 @@
                   %td
                     = room.status
                   %td.t-center
-                    = link_to "Details", room_path(room), :class => "btn btn-default"
+                    = link_to "Details", administration_room_path(room), :class => "btn btn-default"

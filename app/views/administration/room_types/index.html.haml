@@ -18,7 +18,7 @@
                   = room_type.title
             %tr
               %td
-                = form_for @room_type, :html => {:class => "form-horizontal"} do |f|
+                = form_for [:administration, @room_type], :html => {:class => "form-horizontal"} do |f|
                   .col-sm-8
                     = f.text_field :title, class: "form-control"
                   .col-sm-4
@@ -43,7 +43,7 @@
                   = room_view.title
             %tr
               %td
-                = form_for @room_view, :html => {:class => "form-horizontal"} do |f|
+                = form_for [:administration, @room_view], :html => {:class => "form-horizontal"} do |f|
                   .col-sm-8
                     = f.text_field :title, class: "form-control"
                   .col-sm-4

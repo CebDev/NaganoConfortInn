@@ -5,42 +5,42 @@
   .container-fluid
     .container-reservation-form
       %h2 Find your room and book it !
-      = form_for @setting, :html => {:class => "form-horizontal"} do |f|
-        .form-group
-          = f.label :company_name, "Check in", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-4
-            =f.text_field :company_name, id: "datepicker-from", class: "form-control"
-          = f.label :company_name, "Check out", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-4
-            = f.text_field :company_name, id: "datepicker-to", class: "form-control"
-        .form-group
-          = f.label :company_name, "Number of rooms", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-4
-            = f.select(:company_name, options_for_select(1..9), {}, {class: "form-control"})
-          = f.label :company_name, "Adults", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-1
-            .btn.btn-default -
-          .col-sm-2
-            = f.text_field :company_name, class: "form-control"
-          .col-sm-1
-            .btn.btn-default +
-        .form-group
-          = f.label :company_name, "Room type", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-4
-            = f.select(:company_name, @room_types, {}, {class: "form-control"})
-          = f.label :company_name, "Children", values: @setting.company_name, class: "col-sm-2 control-label"
-          .col-sm-1
-            .btn.btn-default -
-          .col-sm-2
-            = f.text_field :company_name, class: "form-control"
-          .col-sm-1
-            .btn.btn-default +
-
-        .form-group
-          .col-sm-8
-          .col-sm-4
-            =f.check_box :company_name, class: "form-check-input"
-            =f.label :company_name, "View", class: "form-check-label"
+      -# = form_for @setting, :html => {:class => "form-horizontal"} do |f|
+      -#   .form-group
+      -#     = f.label :company_name, "Check in", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-4
+      -#       =f.text_field :company_name, id: "datepicker-from", class: "form-control"
+      -#     = f.label :company_name, "Check out", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-4
+      -#       = f.text_field :company_name, id: "datepicker-to", class: "form-control"
+      -#   .form-group
+      -#     = f.label :company_name, "Number of rooms", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-4
+      -#       = f.select(:company_name, options_for_select(1..9), {}, {class: "form-control"})
+      -#     = f.label :company_name, "Adults", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-1
+      -#       .btn.btn-default -
+      -#     .col-sm-2
+      -#       = f.text_field :company_name, class: "form-control"
+      -#     .col-sm-1
+      -#       .btn.btn-default +
+      -#   .form-group
+      -#     = f.label :company_name, "Room type", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-4
+      -#       = f.select(:company_name, @room_types, {}, {class: "form-control"})
+      -#     = f.label :company_name, "Children", values: @setting.company_name, class: "col-sm-2 control-label"
+      -#     .col-sm-1
+      -#       .btn.btn-default -
+      -#     .col-sm-2
+      -#       = f.text_field :company_name, class: "form-control"
+      -#     .col-sm-1
+      -#       .btn.btn-default +
+      -#
+      -#   .form-group
+      -#     .col-sm-8
+      -#     .col-sm-4
+      -#       =f.check_box :company_name, class: "form-check-input"
+      -#       =f.label :company_name, "View", class: "form-check-label"
         .form-group
           .col-sm-8
           .col-sm-4

@@ -1,6 +1,6 @@
 .panel.panel-default
   .panel-body
-    = form_for @setting, :html => {:class => "form-horizontal"} do |f|
+    = form_for [ :administration, @setting ], :html => {:class => "form-horizontal"} do |f|
       .form-group
         = f.label :company_name, "Company Name", values: @setting.company_name, class: "col-sm-2 control-label"
         .col-sm-10

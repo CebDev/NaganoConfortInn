@@ -6,6 +6,11 @@ class RoomPricing < ActiveRecord::Base
   validates :price_open_day, :price_week_end, numericality: true
   validate :dates_validation
 
+  # methode qui retourne les chambres correspondantes au pricing
+  def get_matching_rooms
+    Room.where(room_type_id: room_type_id, room_view_id: room_view_id)
+  end
+
   private
 
   def dates_validation

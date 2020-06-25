@@ -1,4 +1,4 @@
-class RoomTypesController < ApplicationController
+class Administration::RoomTypesController < ApplicationController
 
   def index
     @room_types = RoomType.all
@@ -14,12 +14,12 @@ class RoomTypesController < ApplicationController
     @room_type = RoomType.new(params[:room_type])
     if @room_type.save
       flash[:notice] = "New room type saved successfully."
-      redirect_to room_types_path
+      redirect_to administration_room_types_path
     else
       @room_view = RoomView.new
       @room_types = RoomType.all
       @room_views = RoomView.all
-      render 'room_types/index'
+      render 'administration/room_types/index'
     end
   end
 

@@ -4,7 +4,7 @@
     %li
       = link_to "Overview", administration_path, :class => active_link?(administration_path)
     %li
-      = link_to "Room manager", rooms_path, :class => active_link?(rooms_path)
+      = link_to "Room manager", administration_rooms_path, :class => active_link?(administration_rooms_path)
     %li
       = link_to "Check-in", administration_path
     %li
@@ -21,12 +21,12 @@
   %ul.nav.nav-sidebar
     %h5 Room settings
     %li
-      = link_to "Room creation", new_room_path, :class => active_link?(new_room_path)
+      = link_to "Room creation", new_administration_room_path, :class => active_link?(new_administration_room_path)
     %li
-      = link_to "Pricing", room_pricings_path, :class => active_link?(room_pricings_path, new_room_pricing_path)
+      = link_to "Pricing", administration_room_pricings_path, :class => active_link?(administration_room_pricings_path, new_administration_room_pricing_path)
     %li
-      = link_to "Room settings", room_types_path, :class => active_link?("/room_type")
+      = link_to "Room settings", administration_room_types_path, :class => active_link?(administration_room_types_path)
   %ul.nav.nav-sidebar
     %h5 General settings
     %li
-      = link_to "Company settings", setting_path(1), :class => active_link?("/settings")
+      = link_to "Company settings", administration_setting_path(1), :class => active_link?(administration_setting_path(1))
