@@ -1,4 +1,7 @@
 class Administration::RoomPricingsController < ApplicationController
+
+  layout "administration"
+
   before_filter :set_title
   before_filter :get_all_room_types, :get_all_room_views, only: [:new, :create, :edit, :update]
 

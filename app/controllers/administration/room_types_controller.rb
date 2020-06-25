@@ -1,5 +1,7 @@
 class Administration::RoomTypesController < ApplicationController
 
+  layout "administration"
+
   def index
     @room_types = RoomType.all
     @room_views = RoomView.all

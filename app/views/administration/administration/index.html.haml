@@ -1,26 +1,22 @@
-.container-fluid
-  .row
-    = render "side_menu"
-    .col-sm-9.col-md-10.main
-      %h1.page-header Dashboard
-      .row.placeholders
-        .col-xs-6.col-sm-3.placeholder
-          %img(src="https://via.placeholder.com/200")
-          %h4 "Label"
-          %span.text-muted
-            Room: #{@nbr_total_room}
-            Room checked-in: #{@nbr_room_checked_in}
+%h1.page-header Dashboard
+.row.placeholders
+  .col-xs-6.col-sm-3.placeholder
+    %img(src="https://via.placeholder.com/200")
+    %h4 "Label"
+    %span.text-muted
+      Room: #{@nbr_total_room}
+      Room checked-in: #{@nbr_room_checked_in}
 
-        .col-xs-6.col-sm-3.placeholder
-          %img(src="https://via.placeholder.com/200")
-          %h4 "Label"
-          %span.text-muted "Comment"
-        .col-xs-6.col-sm-3.placeholder
-          %img(src="https://via.placeholder.com/200")
-          %h4 "Label"
-          %span.text-muted "Comment"
-        .col-xs-6.col-sm-3.placeholder
-          %img(src="https://via.placeholder.com/200")
-          %h4 "Label"
-          %span.text-muted "Comment"
-      %h2.sub-header Reservation planning
+  .col-xs-6.col-sm-3.placeholder
+    %img(src="https://via.placeholder.com/200")
+    %h4 "Label"
+    %span.text-muted "Comment"
+  .col-xs-6.col-sm-3.placeholder
+    %img(src="https://via.placeholder.com/200")
+    %h4 "Label"
+    %span.text-muted "Comment"
+  .col-xs-6.col-sm-3.placeholder
+    %img(src="https://via.placeholder.com/200")
+    %h4 "Label"
+    %span.text-muted "Comment"
+%h2.sub-header Reservation planning

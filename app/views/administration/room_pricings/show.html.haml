@@ -1,71 +1,67 @@
-.container-fluid
-  .row
-    = render "administration/side_menu"
-    .col-sm-9.col-md-10.main
-      %h1 Room pricing details
+%h1 Room pricing details
+.panel.panel-default
+  .panel-body
+    %form.form-horizontal
+      .form-group
+        %label.col-sm-2 Title
+        .col-sm-10
+          .form-control
+            = @room_pricing.title
+      .form-group
+        %label.col-sm-2 Room type
+        .col-sm-4
+          .form-control
+            = @room_pricing.room_type.title
+        %label.col-sm-2 Room View
+        .col-sm-4
+          .form-control
+            = @room_pricing.room_view.title
+      .form-group
+        %label.col-sm-2 Date from
+        .col-sm-4
+          .form-control
+            =@room_pricing.date_from
+        %label.col-sm-2 Date to
+        .col-sm-4
+          .form-control
+            =@room_pricing.date_to
       .panel.panel-default
+        .panel-heading Pricing
         .panel-body
-          %form.form-horizontal
-            .form-group
-              %label.col-sm-2 Title
-              .col-sm-10
-                .form-control
-                  = @room_pricing.title
-            .form-group
-              %label.col-sm-2 Room type
-              .col-sm-4
-                .form-control
-                  = @room_pricing.room_type.title
-              %label.col-sm-2 Room View
-              .col-sm-4
-                .form-control
-                  = @room_pricing.room_view.title
-            .form-group
-              %label.col-sm-2 Date from
-              .col-sm-4
-                .form-control
-                  =@room_pricing.date_from
-              %label.col-sm-2 Date to
-              .col-sm-4
-                .form-control
-                  =@room_pricing.date_to
-            .panel.panel-default
-              .panel-heading Pricing
-              .panel-body
-                .form-group
-                  %label.col-sm-2.control-label Open day price
-                  .col-sm-4
-                    .form-control
-                      = "$ #{@room_pricing.price_open_day}"
-                  %label.col-sm-2.control-label Week end price
-                  .col-sm-4
-                    .form-control
-                      = "$ #{@room_pricing.price_week_end}"
-            .form-group
-              .col-sm-10
-              .col-sm-2
-                =link_to "Edit", edit_administration_room_pricing_path(@room_pricing), class: "btn btn-primary btn-lg btn-block"
-      .panel.panel-default
-        .panel-body
-          %h2 Attached rooms
-          %table.table
-            %thead
-              %tr
-                %th Room number
-                %th Floor
-                %th Capacity
-                %th Status
-                %th
-            %tbody
-              - @rooms.each do |room|
-                %tr
-                  %td
-                    = room.number
-                  %td
-                    = room.floor
-                  %td
-                    = room.capacity
-                  %td
-                    = room.status
-                  %td.t-center
-                    = link_to "Details", administration_room_path(room), :class => "btn btn-default"
+          .form-group
+            %label.col-sm-2.control-label Open day price
+            .col-sm-4
+              .form-control
+                = "$ #{@room_pricing.price_open_day}"
+            %label.col-sm-2.control-label Week end price
+            .col-sm-4
+              .form-control
+                = "$ #{@room_pricing.price_week_end}"
+      .form-group
+        .col-sm-10
+        .col-sm-2
+          =link_to "Edit", edit_administration_room_pricing_path(@room_pricing), class: "btn btn-primary btn-lg btn-block"
+.panel.panel-default
+  .panel-body
+    %h2 Attached rooms
+    %table.table
+      %thead
+        %tr
+          %th Room number
+          %th Floor
+          %th Capacity
+          %th Status
+          %th
+      %tbody
+        - @rooms.each do |room|
+          %tr
+            %td
+              = room.number
+            %td
+              = room.floor
+            %td
+              = room.capacity
+            %td
+              = room.status
+            %td.t-center
+              = link_to "Details", administration_room_path(room), :class => "btn btn-default"

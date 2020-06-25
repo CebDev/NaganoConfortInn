@@ -19,14 +19,6 @@
               <%= msg %>
             </div>
           <% end %>
-          <% if @setting.errors.any? %>
-            <h2>The following errors appear on save</h2>
-            <% @setting.errors.full_messages.each do |msg| %>
-              <div class="alert alert-danger">
-                <%= msg %>
-              </div>
-            <% end %>
-          <% end %>
         </div>
       </div>
     </div>

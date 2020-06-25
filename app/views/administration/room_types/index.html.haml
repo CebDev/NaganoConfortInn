@@ -1,58 +1,51 @@
-.container-fluid
-  .row
-    =render "administration/side_menu"
-    .col-sm-9.col-md-10.main
-      %h1 Room settings
-      - flash.each do |name, msg|
-        .alert.alert-success
-          = msg
-      .col-sm-4.col-md-5
-        %table.table
-          %thead
-            %tr
-              %th Room type
-          %tbody
-            - @room_types.each do |room_type|
-              %tr
-                %td
-                  = room_type.title
-            %tr
-              %td
-                = form_for [:administration, @room_type], :html => {:class => "form-horizontal"} do |f|
-                  .col-sm-8
-                    = f.text_field :title, class: "form-control"
-                  .col-sm-4
-                    = submit_tag("Add", class: "btn btn-primary btn-block")
-            - if @room_type.errors.any?
-              %tr
-                %td
-                  - @room_type.errors.full_messages.each do |msg|
-                    .alert.alert-danger
-                      %i.fa.fa-exclamation-triangle
-                      =msg
+%h1 Room settings
+.col-sm-4.col-md-5
+  %table.table
+    %thead
+      %tr
+        %th Room type
+    %tbody
+      - @room_types.each do |room_type|
+        %tr
+          %td
+            = room_type.title
+      %tr
+        %td
+          = form_for [:administration, @room_type], :html => {:class => "form-horizontal"} do |f|
+            .col-sm-8
+              = f.text_field :title, class: "form-control"
+            .col-sm-4
+              = submit_tag("Add", class: "btn btn-primary btn-block")
+      - if @room_type.errors.any?
+        %tr
+          %td
+            - @room_type.errors.full_messages.each do |msg|
+              .alert.alert-danger
+                %i.fa.fa-exclamation-triangle
+                =msg
 
-      .col-sm-4.col-md-5
-        %table.table
-          %thead
-            %tr
-              %th Room View
-          %tbody
-            - @room_views.each do |room_view|
-              %tr
-                %td
-                  = room_view.title
-            %tr
-              %td
-                = form_for [:administration, @room_view], :html => {:class => "form-horizontal"} do |f|
-                  .col-sm-8
-                    = f.text_field :title, class: "form-control"
-                  .col-sm-4
-                    = submit_tag("Add", class: "btn btn-primary btn-block")
-            - if @room_view.errors.any?
-              %tr
-                %td
-                  - @room_view.errors.full_messages.each do |msg|
-                    .alert.alert-danger
-                      %i.fa.fa-exclamation-triangle
-                      =msg
+.col-sm-4.col-md-5
+  %table.table
+    %thead
+      %tr
+        %th Room View
+    %tbody
+      - @room_views.each do |room_view|
+        %tr
+          %td
+            = room_view.title
+      %tr
+        %td
+          = form_for [:administration, @room_view], :html => {:class => "form-horizontal"} do |f|
+            .col-sm-8
+              = f.text_field :title, class: "form-control"
+            .col-sm-4
+              = submit_tag("Add", class: "btn btn-primary btn-block")
+      - if @room_view.errors.any?
+        %tr
+          %td
+            - @room_view.errors.full_messages.each do |msg|
+              .alert.alert-danger
+                %i.fa.fa-exclamation-triangle
+                =msg
 
