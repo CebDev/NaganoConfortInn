@@ -1,48 +1,41 @@
-.container-fluid
-  .row
-    =render "administration/side_menu"
-    .col-sm-9.col-md-10.main
-      %h1 Room manager
-      - flash.each do |name, msg|
-        .alert.alert-success
-          = msg
-      .table-container
-        %table.table
-          %tbody
-            - current_floor = 0
-            - @rooms.each do |room|
-              - if room.floor > current_floor
-                - current_floor = room.floor
-                %tr
-                  %th{:colspan => 6}
-                    = "Floor #{room.floor}"
-              %td.card
-                .panel.panel-default
-                  .panel-heading
-                    %h3
-                      = "Room #{room.number}"
-                      .status
-                        = room_status(room)
-                  .panel-body
-                    %h4
-                      = "Type: #{room.room_type.title}"
-                    %h4
-                      = "View: #{room.room_view.title}"
-                    %hr
-                    %p
-                      = "Capacity #{room.capacity} persons"
-                    %hr
-                    %h4 Current pricing
-                    .room-pricing-container
-                      %p
-                        - if get_current_room_pricing(room).length == 0
-                          = link_to "No rate associates", administration_room_path(room), :class => "red"
-                        - else
-                          - get_current_room_pricing(room).each do |room_pricing|
-                            = link_to room_pricing.title, administration_room_pricing_path(room_pricing)
-                            %br
-                            Open day price = $ #{room_pricing.price_open_day}
-                            %br
-                            Week-end price = $ #{room_pricing.price_week_end}
-                  .panel-footer
-                    = link_to "Details", administration_room_path(room), :class => "btn btn-default btn-sm btn-block"
+%h1 Room manager
+.table-container
+  %table.table
+    %tbody
+      - current_floor = 0
+      - @rooms.each do |room|
+        - if room.floor > current_floor
+          - current_floor = room.floor
+          %tr
+            %th{:colspan => 6}
+              = "Floor #{room.floor}"
+        %td.card
+          .panel.panel-default
+            .panel-heading
+              %h3
+                = "Room #{room.number}"
+                .status
+                  = room_status(room)
+            .panel-body
+              %h4
+                = "Type: #{room.room_type.title}"
+              %h4
+                = "View: #{room.room_view.title}"
+              %hr
+              %p
+                = "Capacity #{room.capacity} persons"
+              %hr
+              %h4 Current pricing
+              .room-pricing-container
+                %p
+                  - if get_current_room_pricing(room).length == 0
+                    = link_to "No rate associates", administration_room_path(room), :class => "red"
+                  - else
+                    - get_current_room_pricing(room).each do |room_pricing|
+                      = link_to room_pricing.title, administration_room_pricing_path(room_pricing)
+                      %br
+                      Open day price = $ #{room_pricing.price_open_day}
+                      %br
+                      Week-end price = $ #{room_pricing.price_week_end}
+            .panel-footer
+              = link_to "Details", administration_room_path(room), :class => "btn btn-default btn-sm btn-block"

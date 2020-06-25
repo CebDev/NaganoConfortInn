@@ -1,5 +1,10 @@
 class Administration::RoomsController < ApplicationController
 
+  layout "administration"
+
+  before_filter :set_title
+  before_filter :get_all_room_types, :get_all_room_views, only: [:show, :new, :create, :edit, :update]
+
   def index
     @rooms = Room.order("floor ASC, number ASC")
   end
@@ -10,23 +15,16 @@ class Administration::RoomsController < ApplicationController
     @room_pricing = RoomPricing.new(room_type_id: @room.room_type_id,
                                     room_view_id: @room.room_view_id,
                                     date_from: Time.new.strftime("%Y-%m-%d").to_s)
-    @room_types = RoomType.all
-    @room_views = RoomView.all
   end
 
   def new
     @btn_text = "Create"
     @room = Room.new
-    @room_types = RoomType.all
-    @room_views = RoomView.all
   end
 
   def create
-
     @room = Room.new(params[:room])
     @room_pricing = RoomPricing.new(params[:room_pricing])
-
-    binding.pry
 
     if @room_pricing.valid?
       @room_pricing.save
@@ -41,15 +39,25 @@ class Administration::RoomsController < ApplicationController
       @room_pricing = RoomPricing.new(room_type_id: @room.room_type_id,
                                       room_view_id: @room.room_view_id,
                                       date_from: Time.new.strftime("%Y-%m-%d").to_s)
-      @room_types = RoomType.all
-      @room_views = RoomView.all
       render 'new'
     end
   end
 
   def edit
     @room = Room.find(params[:id])
+  end
+
+  private
+
+  def set_title
+    @title = "NCI Room settings"
+  end
+
+  def get_all_room_types
     @room_types = RoomType.all
+  end
+
+  def get_all_room_views
     @room_views = RoomView.all
   end
 
