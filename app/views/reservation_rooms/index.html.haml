@@ -1,4 +1,14 @@
 %h1 List room TEST
+%p
+  = @reservation_room.room.number
+  = @reservation_room.room.room_type.title
+  = @reservation_room.room_pricing.room_view.title
+  = @reservation_room.room.get_price_per_nigth("2020-06-26")
+  = @reservation_room.room.get_price_per_nigth("2020-06-27")
+  = @reservation_room.get_price_per_stay
+
+
+
 
 - @rooms.each do |room|
   %div
@@ -10,11 +20,9 @@
       = room.room_view.title
     %p
       Today price :
-      = get_price_per_night("2020-06-26" , room)
+      = room.get_price_per_nigth("2020-06-26")
     %p
       Week-end price :
-      = get_price_per_night("2020-06-27" , room)
-    %p
-      Stay price :
-      = get_price_per_stay("2020-06-26", "2020-06-28" , room)
+      = room.get_price_per_nigth("2020-06-27")
+
   %hr

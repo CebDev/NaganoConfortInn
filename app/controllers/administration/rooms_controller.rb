@@ -11,10 +11,6 @@ class Administration::RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    # initialisation du formulaire pour creation d'un room-pricing si inexistant
-    @room_pricing = RoomPricing.new(room_type_id: @room.room_type_id,
-                                    room_view_id: @room.room_view_id,
-                                    date_from: Time.new.strftime("%Y-%m-%d").to_s)
   end
 
   def new

@@ -28,10 +28,10 @@
               %h4 Current pricing
               .room-pricing-container
                 %p
-                  - if get_current_room_pricing(room).length == 0
+                  - if room.get_room_pricing_on_date("now").length == 0
                     = link_to "No rate associates", administration_room_path(room), :class => "red"
                   - else
-                    - get_current_room_pricing(room).each do |room_pricing|
+                    - room.get_room_pricing_on_date("now").each do |room_pricing|
                       = link_to room_pricing.title, administration_room_pricing_path(room_pricing)
                       %br
                       Open day price = $ #{room_pricing.price_open_day}

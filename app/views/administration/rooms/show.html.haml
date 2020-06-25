@@ -12,8 +12,8 @@
       %td Room view : #{@room.room_view.title}
 %hr
 %h3 Room pricing
-- if get_room_pricing(@room).length > 0
-  - get_room_pricing(@room).each do |room_pricing|
+- if @room.get_room_pricings.length > 0
+  - @room.get_room_pricings.each do |room_pricing|
     %table.table
       %thead
         %tr
@@ -23,7 +23,7 @@
         %tr
           %td Open day price: $ #{room_pricing.price_open_day}
           %td Week-end price: $ #{room_pricing.price_week_end}
-- if get_current_room_pricing(@room).length == 0
+- if @room.get_room_pricing_on_date("now").length == 0
   %p Actually, no rate associates with this room. You can create it down bellow.
   = render "administration/room_pricings/form_room_pricing"
 

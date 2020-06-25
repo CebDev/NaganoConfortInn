@@ -2,7 +2,7 @@ module RoomsHelper
 
   def room_status(room)
     html = "".html_safe
-    if get_current_room_pricing(room).length == 0
+    if room.get_room_pricing_on_date("now").length == 0
       html << "<span class='glyphicon glyphicon-remove-circle red'></span>".html_safe
       html << "<p class='red'>No rate</p>".html_safe
     elsif room.status == "Busy"
@@ -15,11 +15,6 @@ module RoomsHelper
       html << "<span class='glyphicon glyphicon-ban-circle orange'></span>".html_safe
       html << "<p class='orange'>Cleaning</p>".html_safe
     end
-
-  end
-
-  def get_room_pricing (room)
-    RoomPricing.where(room_view_id: room.room_view_id, room_type_id: room.room_type_id, archived_at: nil)
   end
 
 end
