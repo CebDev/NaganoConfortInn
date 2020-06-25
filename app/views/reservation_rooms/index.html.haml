@@ -7,6 +7,15 @@
   = @reservation_room.room.get_price_per_nigth("2020-06-27")
   = @reservation_room.get_price_per_stay
 
+%p
+  = @room.number
+%p
+  = @room.reservation_rooms
+%ul
+  - get_free_rooms_on_date("2020-06-29", "2020-06-30").order("number ASC").each do |room|
+    %li
+      = room.number
+      = room.reservation_rooms
 
 
 

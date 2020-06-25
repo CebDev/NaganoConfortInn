@@ -2,7 +2,9 @@ class ReservationRoomsController < ApplicationController
 
   def index
     @reservation_room = ReservationRoom.first
+    @room = Room.where(:number => 101).last
     @rooms = Room.order("number ASC")
+
   end
 
   def new
@@ -18,7 +20,6 @@ class ReservationRoomsController < ApplicationController
     else
       render 'new'
     end
-
   end
 
 end

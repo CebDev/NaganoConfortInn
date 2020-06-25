@@ -38,6 +38,10 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def get_all_reservations
+
+  end
+
   def room_pricing_to_archived
     room.archived_at = Time.now.to_i
     room.save
