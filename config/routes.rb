@@ -10,6 +10,7 @@ NaganoConforInn::Application.routes.draw do
 
   end
 
+
   resources :reservation_rooms
   # resources :room_types, only: [:index, :create]
   # resource :room_views, only: [:create]
@@ -59,6 +60,7 @@ NaganoConforInn::Application.routes.draw do
   # root :to => 'welcome#index'
   root :to => 'pages#index'
 
+  get 'search' => 'pages#search', :as => 'search_page'
   get 'administration', to: 'administration/administration#index'
 
   # See how all your routes lay out with "rake routes"

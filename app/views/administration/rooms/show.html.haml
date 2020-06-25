@@ -26,4 +26,26 @@
 - if @room.get_room_pricing_on_date("now").length == 0
   %p Actually, no rate associates with this room. You can create it down bellow.
   = render "administration/room_pricings/form_room_pricing"
+%hr
+%h3 Room reservations
+%table.table
+  %thead
+    %tr
+      %th #Reservation
+      %th Name
+      %th Date from
+      %th Date to
+      %th Created at
+  %tbody
+    - @room.reservation_rooms.each do |reservation_room|
+      %td
+        = reservation_room.reservation_id
+      %td
+        Nom du client
+      %td
+        = reservation_room.date_from
+      %td
+        = reservation_room.date_to
+      %td
+        = reservation_room.created_at.to_date
 
