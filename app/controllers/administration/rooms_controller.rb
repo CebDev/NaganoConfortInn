@@ -40,6 +40,7 @@ class Administration::RoomsController < ApplicationController
   end
 
   def edit
+    @btn_text = "Save"
     @room = Room.find(params[:id])
   end
 

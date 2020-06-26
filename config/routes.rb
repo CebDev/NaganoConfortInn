@@ -60,8 +60,10 @@ NaganoConforInn::Application.routes.draw do
   # root :to => 'welcome#index'
   root :to => 'pages#index'
 
+  get 'index' => 'pages#index'
   get 'search' => 'pages#search', :as => 'search_page'
   get 'administration', to: 'administration/administration#index'
+  get 'administration/overview', to: 'administration/administration#overview'
 
   # See how all your routes lay out with "rake routes"
 

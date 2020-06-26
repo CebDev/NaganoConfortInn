@@ -1,6 +1,43 @@
-%h1 Search result
+.container-fluid.search-result
+  %h1 Search result
+  %table.table
+    %tbody
+      %tr
+        %td
+          %h4 Guest
+          %p 2 adults, 0 children
+        %td
+          %h4 Check-in
+          %p Saturday 27 june 2020
+        %td
+          %h4 Check-out
+          %p Sunday 28 june 2020
+        %td
+          .btn.btn-default Search
 
-%ul
+
+
+
   -@rooms.each do |room|
-    %li
-      = room.number
+    .panel.panel-default
+      .panel-body
+        .row
+          .col-sm-3
+            .thumbnail
+              =image_tag "room_double_parking.jpg"
+          .col-sm-9
+            %h3
+              = room.room_type.title
+              - if room.room_view.title == "Ocean"
+                = "  -  View ocean"
+            %p
+              Capacity
+              - for i in (1..room.capacity)
+                %span.fa.fa-user
+            %hr
+            .container-detail-room
+              .col-sm-8
+                = room.number
+                = room.capacity
+              .col-sm-4.container-btn
+                .btn.btn-default.btn-block Book

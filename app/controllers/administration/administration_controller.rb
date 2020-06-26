@@ -8,4 +8,7 @@ class Administration::AdministrationController < ApplicationController
     @nbr_room_checked_in = Room.where(status: "Busy").length
   end
 
+  def overview
+    @rooms = Room.order("floor ASC, number ASC")
+  end
 end

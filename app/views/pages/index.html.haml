@@ -1,49 +1,118 @@
 .section-header
-  .jumbotron
+  .header-title
     %h1 Welcome to Nagano Confort Inn
     %p Leave everything in our hands and take advantage.
-  .container-fluid
-    .container-reservation-form
-      %h2 Find your room and book it !
-      = form_tag :search_page, :method => "get", :class => "form-horizontal" do
-        .form-group
-          = label_tag :date_from, "Check in", class: "col-sm-2 control-label"
-          .col-sm-4
-            = text_field_tag :date_from, '', id: "datepicker-from", class: "form-control"
-          = label_tag :date_to, "Check out", class: "col-sm-2 control-label"
-          .col-sm-4
-            = text_field_tag :date_to, '', id: "datepicker-to", class: "form-control"
-        .form-group
-          = label_tag :number_of_room, "Number of rooms", class: "col-sm-2 control-label"
-          .col-sm-4
-            = select_tag(:number_of_room, options_for_select(1..9), class: "form-control")
-          = label_tag :number_of_adults, "Adults", class: "col-sm-2 control-label"
-          .col-sm-1
-            .btn.btn-default -
-          .col-sm-2
-            = text_field_tag :number_of_adults, '1', class: "form-control"
-          .col-sm-1
-            %div{ class: 'btn btn-default', onclick: 'add_adults();'}
-              +
-            .btn.btn-default +
-        .form-group
-          = label_tag :room_type, "Room type", class: "col-sm-2 control-label"
-          .col-sm-4
-            = select_tag(:room_type, options_from_collection_for_select( @room_types, "id", "title", "Single" ), class: "form-control")
-          = label_tag :number_of_children, "Children", class: "col-sm-2 control-label"
-          .col-sm-1
-            .btn.btn-default -
-          .col-sm-2
-            -# = number_field_tag :number_of_children, :min, min:1, max:5
-            = text_field_tag :number_of_children, '1', class: "form-control"
-          .col-sm-1
-            .btn.btn-default +
-        .form-group
-          .col-sm-8
-          .col-sm-4
-            =label_tag :company_name, "View ocean", class: "form-check-label"
-            =check_box_tag :view_ocean, class: "form-check-input"
-        .form-group
-          .col-sm-8
-          .col-sm-4
-            = submit_tag("Find", class: "btn btn-default btn-lg btn-block")
+.section-form
+  .container-reservation-form
+    %h2 Find your room and book it !
+    = form_tag :search_page, :method => "get", :class => "form-horizontal" do
+      .form-group
+        = label_tag :date_from, "Check in", class: "col-sm-3 control-label"
+        .col-sm-3
+          = text_field_tag :date_from, '', id: "datepicker-from", class: "form-control"
+        = label_tag :date_to, "Check out", class: "col-sm-3 control-label"
+        .col-sm-3
+          = text_field_tag :date_to, '', id: "datepicker-to", class: "form-control"
+      .form-group
+        = label_tag :number_of_room, "Number of rooms", class: "col-sm-3 control-label"
+        .col-sm-3
+          = select_tag(:number_of_room, options_for_select(1..9), class: "form-control")
+        = label_tag :number_of_adults, "Adults", class: "col-sm-3 control-label"
+        .col-sm-1
+          #rm-adult.btn.btn-default -
+        .col-sm-1
+          = text_field_tag :number_of_adults, '1', class: "form-control form-number", id: "number-of-adult"
+        .col-sm-1
+          #add-adult.btn.btn-default +
+      .form-group
+        = label_tag :room_type, "Room type", class: "col-sm-3 control-label"
+        .col-sm-3
+          = select_tag(:room_type, options_from_collection_for_select( @room_types, "id", "title", "Single" ), class: "form-control")
+        = label_tag :number_of_children, "Children", class: "col-sm-3 control-label"
+        .col-sm-1
+          #rm-child.btn.btn-default -
+        .col-sm-1
+          = text_field_tag :number_of_children, '0', class: "form-control form-number", id: "number-of-child"
+        .col-sm-1
+          #add-child.btn.btn-default +
+      .form-group
+        .col-sm-8
+        .col-sm-4
+          =label_tag :view_ocean, "View ocean", class: "form-check-label"
+          =check_box_tag :view_ocean, class: "form-check-input"
+      .form-group
+        .col-sm-8
+        .col-sm-4
+          = submit_tag("Find", class: "btn btn-default btn-lg btn-block")
+.section-room
+  %h2 Rooms
+  .row
+    .col-sm-3
+      =image_tag "room_double_parking.jpg"
+    .col-sm-3
+      %p Contemporary and elegant, Nagano Confort Inn accommodations are designed with your comfort in mind and inspired by the sea, sun, and sand.
+      %p It’s home away from home.
+    .col-sm-3
+      =image_tag "room_double_ocean.jpeg"
+    .col-sm-3
+      %p With spectacular oceanfront views and an exclusive designated beach cabana, these impressive 322 sq ft suites include a myriad luxurious amenities, as well as a walkout terrace providing direct access to the beach.
+  %h4 Deep insight into the desires of travelers, thoughtful amenities include stocked minibars, furnished terraces, ocean views, room service from 7:00 am - 11:00 pm.
+.section-services
+  %h2 All services
+  %table.table
+    %tbody
+      %tr
+        %td
+          %i.fa.fa-bed
+        %td
+          %h4 Sweet suites
+        %td
+          %i.fa.fa-thermometer-half
+        %td
+          %h4 Air conditioning
+        %td
+          %i.fa.fa-television
+        %td
+          %h4 Flat TV
+      %tr
+        %td
+          %i.fa.fa-gift
+        %td
+          %h4 Gift shop
+        %td
+          %i.fa.fa-wifi
+        %td
+          %h4 Wifi in your room
+        %td
+          %i.fa.fa-phone
+        %td
+          %h4 Room service
+      %tr
+        %td
+          %i.fa.fa-coffee
+        %td
+          %h4 Coffee shop
+        %td
+          %i.fa.fa-glass
+        %td
+          %h4 Cocktail bar
+        %td
+          %i.fa.fa-cutlery
+        %td
+          %h4 Restaurant
+      %tr
+        %td
+          %i.fa.fa-bicycle
+        %td
+          %h4 Bicycle rental
+        %td
+          %i.fa.fa-plane
+        %td
+          %h4 Airport shuttle
+        %td
+          %i.fa.fa-wheelchair
+        %td
+          %h4 Wheelchair access
+#contact.section-contact
+  %h2 Contact
+  .container

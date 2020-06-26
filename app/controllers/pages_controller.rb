@@ -6,11 +6,11 @@ class PagesController < ApplicationController
   end
 
   def search
-
     if params[:date_from].blank?
       redirect_to(root_path, alert: "Empty field!")
     else
       @rooms = get_free_rooms_on_date(params[:date_from], params[:date_to])
+                   .where("capacity >= #{ params[:number_of_adults].to_i + params[:number_of_children].to_i }")
                    .order("number ASC")
     end
   end
