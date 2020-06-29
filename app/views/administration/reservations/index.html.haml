@@ -1,4 +1,4 @@
-%h1 Reservation Room list
+%h1 Reservation list
 
 %table.table
   %thead
@@ -10,7 +10,7 @@
       %th Date to
       %th Created at
   %tbody
-    - @reservation_rooms.each do |reservation_room|
+    - @reservations.each do |reservation_room|
       %td
         = reservation_room.reservation_id
       %td

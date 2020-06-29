@@ -18,7 +18,9 @@
   %ul.nav.nav-sidebar
     %h5 Reservations
     %li
-      = link_to "See all", administration_reservation_rooms_path
+      = link_to "See all", administration_reservations_path, :class => active_link?(administration_reservations_path)
+    %li
+      = link_to "Create", new_administration_reservation_path, :class => active_link?(new_administration_room_path)
   %ul.nav.nav-sidebar
     %h5 Room settings
     %li

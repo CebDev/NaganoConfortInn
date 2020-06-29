@@ -3,7 +3,7 @@ NaganoConforInn::Application.routes.draw do
 
   namespace :administration do
     # routes en lien avec l'administration
-    resources :reservation_rooms
+    resources :reservation_rooms, :reservations
     resources :room_pricings, :rooms, only: [:index, :show, :edit, :update, :new, :create]
     resources :settings, only: [:show, :edit, :update, :new, :create]
     resources :room_types, only: [:index, :create]

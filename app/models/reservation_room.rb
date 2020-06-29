@@ -1,6 +1,7 @@
 class ReservationRoom < ActiveRecord::Base
   belongs_to :room
   belongs_to :room_pricing
+  belongs_to :reservation
 
   validates :reservation_id, :room_id, :room_pricing_id, presence: true, numericality: true
 
