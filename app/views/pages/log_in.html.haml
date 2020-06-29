@@ -1,0 +1,9 @@
+.container
+  .log-form
+    = form_tag :index, :method => "post", :class => "form-signin" do
+      %h2 Please sign in
+      = label_tag :email, "Email address", class: "sr-only"
+      = email_field_tag :email, nil, class: "form-control input-lg", placeholder: 'Enter your email address', required: true
+      = submit_tag("Log in", class: "btn btn-lg btn-block btn-dark")
+    %h3 or
+    = link_to "Sign up", sign_up_path, :class => "btn btn-lg btn-block btn-light"

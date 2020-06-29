@@ -11,6 +11,31 @@ h2{
   margin-bottom: 50px;
 }
 
+.btn-light{
+  color: $orange;
+  border: 1px solid $orange;
+  font-weight: bold;
+  letter-spacing: .3em;
+  transition: 0.3s;
+  &:hover{
+    background-color: $orange;
+    color: $white;
+  }
+}
+
+.btn-dark{
+  background-color: $orange;
+  border: 1px solid $white;
+  color: $white;
+  letter-spacing: .3em;
+  transition: .3s;
+  &:hover{
+    background-color: $white;
+    border: 1px solid $orange;
+    color: $orange;
+  }
+}
+
 .section-header{
   max-height: 700px;
   background-image: image_url("background.jpg") ;
@@ -54,18 +79,6 @@ h2{
   .form-number{
     text-align: center;
     font-size: 18px;
-  }
-  .btn{
-    background-color: transparent;
-    border: 1px solid $white;
-    color: $white;
-    letter-spacing: .3em;
-    transition: .3s;
-    &:hover{
-      background-color: $white;
-      border: 1px solid $white;
-      color: $orange;
-    }
   }
 }
 
@@ -146,17 +159,19 @@ h2{
   .container-btn{
     padding-right: 0;
   }
+}
+
+.log-form{
+  margin: 100px auto;
+  width: 400px;
   .btn{
-    color: $orange;
-    border: 1px solid $orange;
-    font-weight: bold;
-    transition: 0.3s;
-    &:hover{
-      background-color: $orange;
-      color: #eeeeee;
-    }
+    margin: 20px 0;
+  }
+  h3{
+    text-align: center
   }
 }
+
 
 
 

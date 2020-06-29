@@ -1,10 +1,9 @@
-class ReservationRoomsController < ApplicationController
+class Administration::ReservationRoomsController < ApplicationController
+
+  layout "administration"
 
   def index
-    @reservation_room = ReservationRoom.first
-    @room = Room.where(:number => 101).last
-    @rooms = Room.order("number ASC")
-
+    @reservation_rooms = ReservationRoom.all
   end
 
   def new

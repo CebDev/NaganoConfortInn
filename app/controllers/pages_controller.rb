@@ -16,6 +16,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def sign_up
+    @customer = Customer.new
+  end
+
   private
 
   def get_free_rooms_on_date(date_from, date_to)

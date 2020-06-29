@@ -15,7 +15,7 @@
           %p
             = params[:date_to]
         %td
-          .btn.btn-default Search
+          .btn.btn-default.btn-light Search
   -@rooms.each do |room|
     .panel.panel-default
       .panel-body
@@ -42,4 +42,4 @@
                 = room.capacity
                 = count_room(room, params[:date_from], params[:date_to])
               .col-sm-4.container-btn
-                .btn.btn-default.btn-block Book
+                .btn.btn-default.btn-block.btn-light Book
