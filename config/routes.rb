@@ -10,8 +10,8 @@ NaganoConforInn::Application.routes.draw do
     resource :room_views, :room_pictures, only: [:create]
 
   end
-  
-  resources :customers
+
+  resources :customers, only: [:create]
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
@@ -59,9 +59,10 @@ NaganoConforInn::Application.routes.draw do
   root :to => 'pages#index'
 
   get 'index' => 'pages#index'
-  post 'index' => 'pages#log'
   get 'search' => 'pages#search', :as => 'search_page'
-  get 'log_in' => 'pages#log_in', :as => 'log_in_page'
+  get 'login' => 'sessions#new'
+  post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
   get 'sign_up' => 'pages#sign_up', :as => "sign_up"
   get 'administration', to: 'administration/administration#index'
   get 'administration/overview', to: 'administration/administration#overview'

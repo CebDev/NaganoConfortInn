@@ -27,9 +27,13 @@
         <li><a href="index#contact">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li ><a href="./">Default <span class="sr-only">(current)</span></a></li>
-        <li><a href="<%= new_reservation_room_path %>">New reservation</a></li>
-        <li class="active"><a href="<%= log_in_page_path %>">Log in</a></li>
+        <% if logged_in? %>
+          <li ><a href="./">My Profil <span class="sr-only">(current)</span></a></li>
+          <li><a href="./">My reservation</a></li>
+          <li><a href="<%= logout_path %>" data-method="delete">Log out</a></li>
+        <% else %>
+          <li class="active"><a href="<%= login_path %>">Log in</a></li>
+        <% end %>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container-fluid -->
