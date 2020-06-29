@@ -16,6 +16,7 @@ class Administration::RoomsController < ApplicationController
   def new
     @btn_text = "Create"
     @room = Room.new
+    @room_picture = RoomPicture.new
   end
 
   def create
@@ -29,7 +30,7 @@ class Administration::RoomsController < ApplicationController
     if @room.valid?
       @room.save
       flash[:notice] = "Your new room was created successfully."
-      redirect_to administration_room_path
+      redirect_to edit_administration_room_path(@room)
     else
       @btn_text = "Create"
       @room_pricing = RoomPricing.new(room_type_id: @room.room_type_id,
@@ -42,6 +43,19 @@ class Administration::RoomsController < ApplicationController
   def edit
     @btn_text = "Save"
     @room = Room.find(params[:id])
+    @room_picture = RoomPicture.new(params[:room_picture])
+  end
+
+  def update
+    @room = Room.find(params[:id])
+    if @room.update_attributes(params[:room])
+      flash[:notice] = "Room was updated successfully."
+      redirect_to edit_administration_room_path(@room)
+    else
+      @room_picture = RoomPicture.new(params[:room_picture])
+      @btn_text = "Save"
+      render 'edit'
+    end
   end
 
   private

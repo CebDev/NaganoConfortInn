@@ -12,6 +12,7 @@ class PagesController < ApplicationController
       @rooms = get_free_rooms_on_date(params[:date_from], params[:date_to])
                    .where("capacity >= #{ params[:number_of_adults].to_i + params[:number_of_children].to_i }")
                    .order("number ASC")
+                   .group("room_type_id, room_view_id")
     end
   end
 

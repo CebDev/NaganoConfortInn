@@ -6,7 +6,7 @@ NaganoConforInn::Application.routes.draw do
     resources :room_pricings, :rooms, only: [:index, :show, :edit, :update, :new, :create]
     resources :settings, only: [:show, :edit, :update, :new, :create]
     resources :room_types, only: [:index, :create]
-    resource :room_views, only: [:create]
+    resource :room_views, :room_pictures, only: [:create]
 
   end
 

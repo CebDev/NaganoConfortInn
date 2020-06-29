@@ -24,7 +24,8 @@
       .form-group
         %label.col-sm-2.control-label Room next : A implementer
       - if @room.errors.any?
-        - if @room.get_current_room_pricing.length == 0
+        - binding.pry
+        - if @room.get_room_pricing_on_date(Date.new).empty?
           .alert.alert-danger
             %i.fa.fa-exclamation-triangle
             Actually, no rate associates with this room. You can create it down bellow.
@@ -66,4 +67,11 @@
       .alert.alert-danger
         %i.fa.fa-exclamation-triangle
         =msg
-
+- if request.path != "/administration/rooms/new"
+  = render "administration/rooms/form_room_picture"
+- if @room_picture.errors.any?
+  %h3 The following errors appear on save
+  - @room_picture.errors.full_messages.each do |msg|
+    .alert.alert-danger
+      %i.fa.fa-exclamation-triangle
+      =msg

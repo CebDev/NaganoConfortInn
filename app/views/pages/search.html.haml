@@ -5,26 +5,27 @@
       %tr
         %td
           %h4 Guest
-          %p 2 adults, 0 children
+          %p #{params[:number_of_adults]} adults, #{params[:number_of_children]} children
         %td
           %h4 Check-in
-          %p Saturday 27 june 2020
+          %p
+            = params[:date_from]
         %td
           %h4 Check-out
-          %p Sunday 28 june 2020
+          %p
+            = params[:date_to]
         %td
           .btn.btn-default Search
-
-
-
-
   -@rooms.each do |room|
     .panel.panel-default
       .panel-body
         .row
           .col-sm-3
             .thumbnail
-              =image_tag "room_double_parking.jpg"
+              - if room.room_pictures.empty?
+                = image_tag "room_double_ocean.jpeg"
+              - else
+                = image_tag room.room_pictures.first.file_name
           .col-sm-9
             %h3
               = room.room_type.title
@@ -39,5 +40,6 @@
               .col-sm-8
                 = room.number
                 = room.capacity
+                = count_room(room, params[:date_from], params[:date_to])
               .col-sm-4.container-btn
                 .btn.btn-default.btn-block Book

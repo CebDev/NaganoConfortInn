@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-body
+    .row
+      - @room.room_pictures.each do |picture|
+        .col-xs-6.col-md-3
+          .thumbnail
+            = image_tag picture.file_name
+            %small
+              = picture.file_name
+    .form-horizontal
+      = form_for [:administration, @room_picture] do |f|
+        .form-group
+          = f.label :file_name, "File name", class: "col-sm-2 control-label"
+          .col-sm-7
+            = f.text_field :file_name, class: "form-control"
+            = f.hidden_field :room_id, :value => @room.id
+          .col-sm-3
+            = submit_tag("Add picture", class: "btn btn-primary btn-block")

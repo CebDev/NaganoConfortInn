@@ -17,6 +17,4 @@ module RoomsHelper
     end
   end
 
-
-
 end
