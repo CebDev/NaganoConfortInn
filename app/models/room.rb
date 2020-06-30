@@ -39,6 +39,15 @@ class Room < ActiveRecord::Base
     end
   end
 
+  def get_price_per_stay(date_from, date_to)
+    total_price = 0.0
+    ((date_from.to_date)...(date_to.to_date)).each do |date|
+      night_price = get_price_per_nigth(date)
+      total_price += night_price
+    end
+    total_price
+  end
+
   def get_all_reservations
 
   end

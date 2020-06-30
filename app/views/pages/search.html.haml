@@ -1,5 +1,5 @@
 .container-fluid.search-result
-  %h1 Search result
+  %h1 Your research
   .container
     = render "form_search_room"
   %h2 Result
@@ -27,4 +27,6 @@
               .col-sm-8
                 #{count_room(room, params[:date_from], params[:date_to])} free rooms
               .col-sm-4.container-btn
+                %h4 Price for #{pluralize((params[:date_to].to_date - params[:date_from].to_date).to_i, 'nigth')}
+                %h4.price $ #{room.get_price_per_stay(params[:date_from], params[:date_to])}
                 .btn.btn-default.btn-block.btn-light Book

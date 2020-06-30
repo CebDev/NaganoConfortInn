@@ -68,6 +68,9 @@ h2{
   margin: 0 auto;
   padding: 0 2em;
   color: $white;
+}
+
+.reservation-form{
   font-size: 18px;
   h2{
     text-align: center;
@@ -75,6 +78,10 @@ h2{
   }
   .control-label{
     text-align: center;
+  }
+  .form-btn{
+    width: 100%;
+    font-weight: 800;
   }
   .form-number{
     text-align: center;
@@ -150,6 +157,7 @@ h2{
     color: #eeeeee;
     font-weight: bold;
   }
+
   p{
     margin-top: 10px;
     span{
@@ -158,6 +166,13 @@ h2{
   }
   .container-btn{
     padding-right: 0;
+    h4{
+      text-align: center;
+    }
+    .price{
+      font-weight: bold;
+      color: $orange;
+    }
   }
 }
 
