@@ -2,10 +2,10 @@ class PagesController < ApplicationController
   def index
     @title = 'NaganoConforInn'
     @room_types = RoomType.all
-    @room_view = RoomView.all
   end
 
   def search
+    @room_types = RoomType.all
     if params[:date_from].blank?
       redirect_to(root_path, alert: "Empty field!")
     else
@@ -13,6 +13,9 @@ class PagesController < ApplicationController
                    .where("capacity >= #{ params[:number_of_adults].to_i + params[:number_of_children].to_i }")
                    .order("number ASC")
                    .group("room_type_id, room_view_id")
+      if params[:view_ocean]
+        @rooms = @rooms.where("room_view_id = 1")
+      end
     end
   end
 

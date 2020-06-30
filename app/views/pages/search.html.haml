@@ -1,21 +1,8 @@
 .container-fluid.search-result
   %h1 Search result
-  %table.table
-    %tbody
-      %tr
-        %td
-          %h4 Guest
-          %p #{params[:number_of_adults]} adults, #{params[:number_of_children]} children
-        %td
-          %h4 Check-in
-          %p
-            = params[:date_from]
-        %td
-          %h4 Check-out
-          %p
-            = params[:date_to]
-        %td
-          .btn.btn-default.btn-light Search
+  .container
+    = render "form_search_room"
+  %h2 Result
   -@rooms.each do |room|
     .panel.panel-default
       .panel-body
@@ -38,8 +25,6 @@
             %hr
             .container-detail-room
               .col-sm-8
-                = room.number
-                = room.capacity
-                = count_room(room, params[:date_from], params[:date_to])
+                #{count_room(room, params[:date_from], params[:date_to])} free rooms
               .col-sm-4.container-btn
                 .btn.btn-default.btn-block.btn-light Book
