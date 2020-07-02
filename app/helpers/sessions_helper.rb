@@ -18,4 +18,6 @@ module SessionsHelper
     !current_customer.nil?
   end
 
+
+
 end

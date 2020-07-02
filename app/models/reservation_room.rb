@@ -1,9 +1,9 @@
 class ReservationRoom < ActiveRecord::Base
   belongs_to :room
-  belongs_to :room_pricing
   belongs_to :reservation
 
-  validates :reservation_id, :room_id, :room_pricing_id, presence: true, numericality: true
+
+  validates :reservation_id, :room_id, presence: true, numericality: true
 
   def get_price_per_stay
     date = date_from

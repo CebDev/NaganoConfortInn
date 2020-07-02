@@ -1,0 +1,7 @@
+%h1
+  Today's Check-in
+- if @room_reservation.empty?
+  no reservation today
+- else
+  -@room_reservation.each do |room_reservation|
+    =room_reservation.room.number

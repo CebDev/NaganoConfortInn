@@ -13,7 +13,7 @@
       - @shopping_cart.each_with_index do |value, index|
         .panel.panel-default
           .panel-body
-            %h3
+            %h3.shopping-cart
               1 room: #{value[:room_type]}
               - if value[:room_view] == "Ocean"
                 = "  -  View ocean"
@@ -28,7 +28,7 @@
     .panel-heading Resume
     .panel-body
       = form_for ['administration', @reservation], :html => {:class => "form-horizontal"} do |f|
-        = f.hidden_field :user_id, :value => session[:customer_id]
+        = f.hidden_field :customer_id, :value => session[:customer_id]
         = f.hidden_field :total_price, :value => total_price
         .form-group
           %h6 Special request or comment

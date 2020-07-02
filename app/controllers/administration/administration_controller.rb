@@ -11,4 +11,9 @@ class Administration::AdministrationController < ApplicationController
   def overview
     @rooms = Room.order("floor ASC, number ASC")
   end
+
+  def check_in
+    @room_reservation = ReservationRoom.where("date_from = ?", Time.new.strftime("%Y-%m-%d").to_s )
+  end
+
 end

@@ -12,7 +12,7 @@ class Administration::ReservationsController < ApplicationController
 
   def create
     reservation = Reservation.new(params[:reservation])
-    # reservation.save
+    reservation.save
     shopping_cart = session[:shopping_cart]
     shopping_cart.each do |line|
       room_type_id = RoomType.find_by_title(line[:room_type])
@@ -21,14 +21,15 @@ class Administration::ReservationsController < ApplicationController
                  .where("room_type_id = ?", room_type_id)
                  .where("room_view_id = ?", room_view_id)
                  .first
-      reservation_room = ReservationRoom.new(reservation_id: @reservation.id,
-                                             room_id: @room.id,
+      reservation_room = ReservationRoom.new(reservation_id: reservation.id,
+                                             room_id: room.id,
                                              date_from: line[:date_from],
-                                             date_to: line[:date_to]
-                                             )
-      binding.pry
-    end
+                                             date_to: line[:date_to])
+      reservation_room.save
 
+      session.delete(:shopping_cart)
+    end
+    redirect_to root_path
   end
 
   private

@@ -5,22 +5,29 @@
     %tr
       %th #Reservation
       %th Name
+      %th Created at
       %th Rooms
       %th Date from
       %th Date to
-      %th Created at
-  %tbody
-    - @reservations.each do |reservation_room|
-      %td
-        = reservation_room.reservation_id
-      %td
-        Nom du client
-      %td
-      %td
-        = reservation_room.date_from
-      %td
-        = reservation_room.date_to
-      %td
-        = reservation_room.created_at.to_date
 
+  %tbody
+    - @reservations.each do |reservation|
+      %td{:rowspan => reservation.reservation_rooms.length + 1}
+        = reservation.id
+      %td{:rowspan => reservation.reservation_rooms.length + 1}
+        = reservation.customer.name
+      %td{:rowspan => reservation.reservation_rooms.length + 1}
+        = reservation.created_at.to_date
+        - reservation.reservation_rooms.order("date_from ASC").each do |reservation_room|
+          %tr
+            %td
+              \#
+              = reservation_room.room.number
+              = reservation_room.room.room_type.title
+              = reservation_room.room.room_view.title
+
+            %td
+              = reservation_room.date_from
+            %td
+              = reservation_room.date_from
 

@@ -48,8 +48,11 @@ class Room < ActiveRecord::Base
     total_price
   end
 
-  def get_all_reservations
-
+  def is_reserved_today?
+    if ReservationRoom.where("room_id = ?", id).where("date_from = ?", Time.new.strftime("%Y-%m-%d").to_s).empty?
+      return false
+    end
+    true
   end
 
   def room_pricing_to_archived

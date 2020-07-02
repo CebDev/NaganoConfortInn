@@ -6,7 +6,7 @@
     %li
       = link_to "Room manager", administration_overview_path, :class => active_link?(administration_overview_path)
     %li
-      = link_to "Check-in", administration_path
+      = link_to "Check-in", administration_check_in_path, :class => active_link?(administration_check_in_path)
     %li
       = link_to "Check-out", administration_path
   %ul.nav.nav-sidebar
