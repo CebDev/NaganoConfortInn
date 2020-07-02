@@ -60,6 +60,9 @@ NaganoConforInn::Application.routes.draw do
 
   get 'index' => 'pages#index'
   get 'search' => 'pages#search', :as => 'search_page'
+  get 'shopping_cart' => 'shopping_carts#show', :as => 'shopping_cart'
+  post 'shopping_cart' => 'shopping_carts#add', :as => 'shopping_cart'
+  delete 'shopping_cart' => 'shopping_carts#delete', :as => 'shopping_cart'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

@@ -10,7 +10,7 @@
     .form-group
       = label_tag :number_of_room, "Number of rooms", class: "col-sm-3 control-label"
       .col-sm-3
-        = select_tag(:number_of_room, options_for_select(1..9, params[:number_of_room] || "1"), class: "form-control")
+        = select_tag(:number_of_room, options_for_select(1..9, params[:number_of_room] || "1"), disabled: enabled_number_of_room(params[:number_of_adults]), class: "form-control", id: "number-of-room")
       = label_tag :number_of_adults, "Adults", class: "col-sm-3 control-label"
       .col-sm-1
         #rm-adult.btn.btn-default.form-btn -
@@ -30,10 +30,14 @@
       .col-sm-1
         #add-child.btn.btn-default.form-btn +
     .form-group
-      .col-sm-8
-      .col-sm-4
-        =label_tag :view_ocean, "View ocean", class: "form-check-label"
-        =check_box_tag :view_ocean, '', params[:view_ocean] || false, class: "form-check-input"
+      .col-sm-6
+      =label_tag :view_ocean, "View ocean", class: "col-sm-3 control-label"
+      .col-sm-1
+        - if params[:view_ocean] == "1"
+          %i#view-ocean.fa.fa-toggle-on
+        - else
+          %i#view-ocean.fa.fa-toggle-off
+      = hidden_field_tag(:view_ocean, params[:view_ocean] || "0", id: "view-ocean-input")
     .form-group
       .col-sm-8
       .col-sm-4

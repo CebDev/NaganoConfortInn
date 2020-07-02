@@ -18,15 +18,22 @@
               = room.room_type.title
               - if room.room_view.title == "Ocean"
                 = "  -  View ocean"
-            %p
-              Capacity
-              - for i in (1..room.capacity)
-                %span.fa.fa-user
             %hr
             .container-detail-room
-              .col-sm-8
-                #{count_room(room, params[:date_from], params[:date_to])} free rooms
+              .col-sm-3
+                %p.left Capacity
+                - for i in (1..room.capacity)
+                  %span.fa.fa-user
+              .col-sm-5
+                %p Price for #{pluralize((params[:date_to].to_date - params[:date_from].to_date).to_i, 'nigth')}
+                %p.orange $ #{room.get_price_per_stay(params[:date_from], params[:date_to])}
               .col-sm-4.container-btn
-                %h4 Price for #{pluralize((params[:date_to].to_date - params[:date_from].to_date).to_i, 'nigth')}
-                %h4.price $ #{room.get_price_per_stay(params[:date_from], params[:date_to])}
-                .btn.btn-default.btn-block.btn-light Book
+                %p.orange #{count_room(room, params[:date_from], params[:date_to])} rooms available
+                %p Select number of room
+                = link_to "Book",
+                    shopping_cart_path(:add_to_shopping_cart => { :date_from => params[:date_from],
+                                                                  :date_to => params[:date_to],
+                                                                  :room_type => room.room_type.title,
+                                                                  :room_view => room.room_view.title,
+                                                                  :room_price => room.get_price_per_stay(params[:date_from], params[:date_to]) }),
+                                                                  method: :post, :class => "btn btn-default btn-block.btn-light"

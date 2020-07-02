@@ -1,0 +1,66 @@
+.container.sh
+  %h1 Shopping cart
+  .panel.panel-default
+    .panel-body
+      - if logged_in?
+        = current_customer.name
+      - else
+        = render 'sessions/form_log_in'
+  .panel.panel-default
+    .panel-heading Your reservation
+    .panel-body
+      - total_price = 0
+      - @shopping_cart.each_with_index do |value, index|
+        .panel.panel-default
+          .panel-body
+            %h3
+              1 room: #{value[:room_type]}
+              - if value[:room_view] == "Ocean"
+                = "  -  View ocean"
+              %span
+                = link_to "X", shopping_cart_path(:remove_index => index), method: :delete
+            %p.col-sm-8 From #{value[:date_from]} to #{value[:date_to]}
+            %p.col-sm-2.align-right Price for your stay:
+            %p.orange.col-sm-2
+              $ #{value[:room_price]}
+              - total_price += value[:room_price].to_f
+  .panel.panel-default
+    .panel-heading Resume
+    .panel-body
+      = form_for ['administration', @reservation], :html => {:class => "form-horizontal"} do |f|
+        = f.hidden_field :user_id, :value => session[:customer_id]
+        = f.hidden_field :total_price, :value => total_price
+        .form-group
+          %h6 Special request or comment
+          %p Please write your requests in English or French. Special requests cannot be guaranteed – but the property will do its best to meet your needs.
+          = f.text_area :comment, class: "form-control", rows: "5"
+        - if @shopping_cart.length > 1
+          .form-group
+            = check_box_tag :close_rooms
+            = label_tag 'I want rooms close to each other (if available)'
+        .col-sm-8
+        .col-sm-2
+          %p.align-right Total price :
+          %p.align-right TPS(#{@setting.tps}%)
+          %p.align-right TVQ(#{@setting.tvq}%)
+          %p.align-right You pay :
+        .col-sm-2
+          %p.orange
+            $ #{ total_price }
+          %p
+            - tps = total_price * @setting.tps.to_f / 100
+            $ #{ tps }
+
+          %p
+            - tvq = total_price * @setting.tvq.to_f / 100
+            $ #{ tvq }
+          %p.orange.final-price
+            $ #{ total_price + tps + tvq }
+
+        .form-group
+          .col-sm-8
+          .col-sm-4
+            - if logged_in?
+              = submit_tag("Reserve", class: "btn btn-default btn-lg btn-block btn-dark")
+            - else
+              = submit_tag("Log to confirm", disabled: true, class: "btn btn-default btn-lg btn-block btn-dark")

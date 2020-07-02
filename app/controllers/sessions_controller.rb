@@ -4,7 +4,6 @@ class SessionsController < ApplicationController
   end
 
   def create
-    binding.pry
     customer = Customer.find_by_email params[:session][:email]
     if customer
       log_in customer

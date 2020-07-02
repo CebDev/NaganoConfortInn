@@ -87,6 +87,10 @@ h2{
     text-align: center;
     font-size: 18px;
   }
+  i{
+    font-size: 35px;
+  }
+
 }
 
 .section-room{
@@ -157,6 +161,21 @@ h2{
     color: #eeeeee;
     font-weight: bold;
   }
+  p{
+      text-align: center;
+  }
+  .left{
+    text-align: left;
+  }
+  .orange{
+    text-align: center;
+    font-weight: bold;
+    color: $orange;
+  }
+  i{
+    font-size: 35px;
+    color: $orange;
+  }
 
   p{
     margin-top: 10px;
@@ -166,18 +185,15 @@ h2{
   }
   .container-btn{
     padding-right: 0;
-    h4{
-      text-align: center;
-    }
-    .price{
-      font-weight: bold;
-      color: $orange;
-    }
   }
 }
 
+.container-login-form{
+  padding-top: 100px;
+}
+
 .log-form{
-  margin: 100px auto;
+  margin: 0 auto;
   width: 400px;
   .btn{
     margin: 20px 0;
