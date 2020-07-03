@@ -94,13 +94,13 @@ h2{
 }
 
 .section-room{
+  padding: 70px 50px;
   clear: both;
   font-size: 1.4em;
   letter-spacing: 0.1em;
   line-height: 1.5em;
   h2{
-    position: relative;
-    top: -2em;
+    margin-bottom: 100px;
   }
   img{
     padding: 0 10px;
@@ -193,7 +193,7 @@ h2{
 }
 
 .log-form{
-  margin: 0 auto;
+  margin: 0 auto 100px;
   width: 400px;
   .btn{
     margin: 20px 0;

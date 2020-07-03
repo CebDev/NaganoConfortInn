@@ -1,5 +1,9 @@
 class CustomersController < ApplicationController
 
+  def show
+    @customer = Customer.find(current_customer)
+  end
+
   def create
     @customer = Customer.new(params[:customer])
     if @customer.save
@@ -10,6 +14,8 @@ class CustomersController < ApplicationController
       render 'pages/sign_up'
     end
   end
+
+  
 
 
 end

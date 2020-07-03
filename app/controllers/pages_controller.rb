@@ -1,12 +1,14 @@
 class PagesController < ApplicationController
+
+  before_filter :get_all_room_types, only: [:index, :search]
+
+
   def index
     @title = 'NaganoConforInn'
-    @room_types = RoomType.all
   end
 
   def search
     @title = 'NCI room search'
-    @room_types = RoomType.all
     if params[:date_from].blank?
       redirect_to(root_path, alert: "Empty field!")
     else
@@ -26,7 +28,6 @@ class PagesController < ApplicationController
   end
 
   def shopping_cart
-
   end
 
   def sign_up
@@ -35,6 +36,10 @@ class PagesController < ApplicationController
   end
 
   private
+
+  def get_all_room_types
+    @room_types = RoomType.all
+  end
 
   def get_free_rooms_on_date(date_from, date_to)
     Room.joins("LEFT JOIN reservation_rooms ON reservation_rooms.room_id = rooms.id")
