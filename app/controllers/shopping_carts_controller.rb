@@ -9,7 +9,7 @@ class ShoppingCartsController < ApplicationController
   def add
     session[:shopping_cart] ||= []
     session[:shopping_cart] << params[:add_to_shopping_cart]
-    redirect_to shopping_cart_path
+    redirect_to session[:last_search_uri]
   end
 
   def delete

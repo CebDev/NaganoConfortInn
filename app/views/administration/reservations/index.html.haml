@@ -1,33 +1,35 @@
 %h1 Reservation list
+%p click on the line to see details
 
-%table.table
+%table.table.table-hover
   %thead
     %tr
       %th #Reservation
       %th Name
       %th Created at
-      %th Rooms
-      %th Date from
-      %th Date to
+      %th Rooms detail
 
   %tbody
     - @reservations.each do |reservation|
-      %td{:rowspan => reservation.reservation_rooms.length + 1}
-        = reservation.id
-      %td{:rowspan => reservation.reservation_rooms.length + 1}
-        = reservation.customer.name
-      %td{:rowspan => reservation.reservation_rooms.length + 1}
-        = reservation.created_at.to_date
-        - reservation.reservation_rooms.order("date_from ASC").each do |reservation_room|
-          %tr
-            %td
-              \#
-              = reservation_room.room.number
-              = reservation_room.room.room_type.title
-              = reservation_room.room.room_view.title
-
-            %td
-              = reservation_room.date_from
-            %td
-              = reservation_room.date_from
+      %tr{:class => "clickable-row", data:{ :href => "#{administration_reservation_path reservation}"} }
+        %td
+          = reservation.id
+        %td
+          = reservation.customer.name
+        %td
+          = reservation.created_at.to_date
+        %td
+          %table.table
+            %tbody
+              - reservation.reservation_rooms.order("date_from ASC").each do |reservation_room|
+                %tr
+                  %td
+                    \#
+                    = reservation_room.room.number
+                    = reservation_room.room.room_type.title
+                    = reservation_room.room.room_view.title
+                  %td
+                    = reservation_room.date_from
+                  %td
+                    = reservation_room.date_from
 

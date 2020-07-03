@@ -38,14 +38,15 @@
       %th Created at
   %tbody
     - @room.reservation_rooms.each do |reservation_room|
-      %td
-        = reservation_room.reservation_id
-      %td
-        Nom du client
-      %td
-        = reservation_room.date_from
-      %td
-        = reservation_room.date_to
-      %td
-        = reservation_room.created_at.to_date
+      %tr
+        %td
+          = reservation_room.reservation_id
+        %td
+          Nom du client
+        %td
+          = reservation_room.date_from
+        %td
+          = reservation_room.date_to
+        %td
+          = reservation_room.created_at.to_date
 

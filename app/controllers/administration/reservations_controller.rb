@@ -10,6 +10,10 @@ class Administration::ReservationsController < ApplicationController
     @room_types = RoomType.all
   end
 
+  def show
+    @reservation = Reservation.find(params[:id])
+  end
+
   def create
     reservation = Reservation.new(params[:reservation])
     reservation.save

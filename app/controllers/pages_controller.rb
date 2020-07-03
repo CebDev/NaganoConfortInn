@@ -25,6 +25,7 @@ class PagesController < ApplicationController
         @rooms = @rooms.where("room_view_id = ?", params[:view_ocean])
       end
     end
+    session[:last_search_uri] = request.env['REQUEST_URI']
   end
 
   def shopping_cart

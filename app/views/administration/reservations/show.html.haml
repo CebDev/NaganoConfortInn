@@ -1,0 +1,43 @@
+%h1 Reservation details
+.panel.panel-default
+  .panel-heading Guest information
+  .panel-body
+    .col-sm-1
+      %p Id: #{@reservation.customer.id}
+    .col-sm-2
+      %p Name: #{@reservation.customer.name}
+    .col-sm-2
+      %p First name: #{@reservation.customer.first_name}
+    .col-sm-3
+      %p Email: #{@reservation.customer.email}
+    .col-sm-2
+      %p Phone number: #{@reservation.customer.phone_number}
+.panel.panel-default
+  .panel-heading Reservation Detail
+  .panel-body
+    .row
+      .col-sm-2
+        %p Created at: #{@reservation.created_at.to_date}
+      .col-sm-10.align-right
+        %p Paid : $ #{@reservation.total_price}
+    .row.margin-bottom
+      .col-lg-6
+        %p Customer's comment :
+        - if @reservation.comment.empty?
+          No special request
+        - else
+          = @reservation.comment
+    .panel.panel-default
+      .panel-body
+        - @reservation.reservation_rooms.each do |reservation_room|
+          .row
+            .col-sm-2
+              .thumbnail
+                = image_tag( reservation_room.room.get_first_picture, class: 'img-reservation')
+            .col-sm-9
+              %p From #{reservation_room.date_from} to #{reservation_room.date_from}
+              %p #{reservation_room.room.room_type.title} - #{reservation_room.room.room_view.title}
+              %p Room number: #{reservation_room.room.number}  -  Floor: #{reservation_room.room.floor}
+              %p Capacity: #{ pluralize(reservation_room.room.capacity, "sleeper")}
+            .col-sm-1.align-right
+              = link_to "", administration_reservation_room_path(reservation_room), method: :delete, class: 'fa fa-times', data: {confirm: "Are you sure?"}

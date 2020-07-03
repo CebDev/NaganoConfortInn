@@ -21,4 +21,14 @@ class Administration::ReservationRoomsController < ApplicationController
     end
   end
 
+  def destroy
+    @reservation_room = ReservationRoom.find(params[:id])
+    if @reservation_room.reservation.reservation_rooms.length == 1
+      @reservation_room.reservation.destroy
+    else
+      @reservation_room.destroy
+    end
+    redirect_to administration_reservations_path
+  end
+
 end
