@@ -1,6 +1,6 @@
 class CustomersController < ApplicationController
 
-  def show
+  def edit
     @customer = Customer.find(current_customer)
   end
 
@@ -15,7 +15,17 @@ class CustomersController < ApplicationController
     end
   end
 
-  
+  def update
+    @customer = Customer.find(params[:id])
+    if @customer.update_attributes(params[:customer])
+      flash[:notice] = "Your profil was updated successfully."
+      redirect_to edit_customer_path @customer
+    else
+      render 'edit'
+    end
+  end
+
+
 
 
 end

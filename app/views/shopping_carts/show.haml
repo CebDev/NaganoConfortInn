@@ -1,29 +1,34 @@
 .container.sh
   %h1 Shopping cart
   .panel.panel-default
+    .panel-heading Guest information
     .panel-body
       - if logged_in?
-        = current_customer.name
+        %p Name: #{current_customer.name}
+        %p First name: #{current_customer.first_name}
       - else
         = render 'sessions/form_log_in'
   .panel.panel-default
     .panel-heading Your reservation
     .panel-body
       - total_price = 0
-      - @shopping_cart.each_with_index do |value, index|
-        .panel.panel-default
-          .panel-body
-            %h3.shopping-cart
-              1 room: #{value[:room_type]}
-              - if value[:room_view] == "Ocean"
-                = "  -  View ocean"
-              %span
-                = link_to "X", shopping_cart_path(:remove_index => index), method: :delete
-            %p.col-sm-8 From #{value[:date_from]} to #{value[:date_to]}
-            %p.col-sm-2.align-right Price for your stay:
-            %p.orange.col-sm-2
-              $ #{value[:room_price]}
-              - total_price += value[:room_price].to_f
+      - if @shopping_cart.empty?
+        %p No reservation in your shopping cart
+      -else
+        - @shopping_cart.each_with_index do |value, index|
+          .panel.panel-default
+            .panel-body
+              %h3.shopping-cart
+                1 room: #{value[:room_type]}
+                - if value[:room_view] == "Ocean"
+                  = "  -  View ocean"
+                %span
+                  = link_to "X", shopping_cart_path(:remove_index => index), method: :delete
+              %p.col-sm-8 From #{value[:date_from]} to #{value[:date_to]}
+              %p.col-sm-2.align-right Price for your stay:
+              %p.orange.col-sm-2
+                $ #{value[:room_price]}
+                - total_price += value[:room_price].to_f
   .panel.panel-default
     .panel-heading Resume
     .panel-body

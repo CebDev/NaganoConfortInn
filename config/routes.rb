@@ -11,7 +11,7 @@ NaganoConforInn::Application.routes.draw do
 
   end
 
-  resources :customers, only: [:create, :show]
+  resources :customers, only: [:create, :edit, :update]
 
   # Sample of named route:
   #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
