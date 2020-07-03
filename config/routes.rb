@@ -67,6 +67,7 @@ NaganoConforInn::Application.routes.draw do
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   get 'sign_up' => 'pages#sign_up', :as => "sign_up"
+  get 'myreservations' => 'customers#reservations'
   get 'administration', to: 'administration/administration#index'
   get 'administration/overview', to: 'administration/administration#overview'
   get 'administration/check_in', to: 'administration/administration#check_in'

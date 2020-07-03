@@ -25,6 +25,10 @@ class CustomersController < ApplicationController
     end
   end
 
+  def reservations
+    @reservations = Reservation.where("customer_id = ?", current_customer.id)
+  end
+
 
 
 

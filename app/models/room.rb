@@ -9,6 +9,14 @@ class Room < ActiveRecord::Base
   validates :capacity, presence: true, numericality: true
   validate :room_pricing_exist
 
+  def get_first_picture
+    if room_pictures.empty?
+      "room_double_ocean.jpeg"
+    else
+      room_pictures.first.file_name
+    end
+  end
+
   def room_pricing_exist
     if RoomPricing
            .where("date_from <= DATE('now') AND date_to >= DATE('now')")
