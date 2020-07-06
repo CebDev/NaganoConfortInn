@@ -9,6 +9,7 @@ class CustomersController < ApplicationController
     if @customer.save
       flash[:notice] = "Your logged successfully."
       log_in @customer
+      CustomerMailer.welcome_email
       redirect_to index_path
     else
       render 'pages/sign_up'

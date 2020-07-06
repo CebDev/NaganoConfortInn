@@ -12,7 +12,7 @@
                   %td
                     = image_tag( reservation_room.room.get_first_picture, class: 'img-reservation')
                   %td
-                    %p From #{reservation_room.date_from} to #{reservation_room.date_from}
+                    %p From #{reservation_room.date_from} to #{reservation_room.date_to}
                     %p #{reservation_room.room.room_type.title} - #{reservation_room.room.room_view.title}
   .panel.panel-default
     .panel-heading Past reservation

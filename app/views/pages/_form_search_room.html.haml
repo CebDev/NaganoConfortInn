@@ -3,7 +3,7 @@
     .form-group
       = label_tag :date_from, "Check in", class: "col-sm-3 control-label"
       .col-sm-3
-        = text_field_tag :date_from, params[:date_from], id: "datepicker-from", class: "form-control", required: true
+        = text_field_tag :date_from, params[:date_from] || Date.today, id: "datepicker-from", class: "form-control", required: true
       = label_tag :date_to, "Check out", class: "col-sm-3 control-label"
       .col-sm-3
         = text_field_tag :date_to, params[:date_to], id: "datepicker-to", class: "form-control", required: true

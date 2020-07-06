@@ -30,7 +30,8 @@ class Administration::ReservationsController < ApplicationController
                                              date_from: line[:date_from],
                                              date_to: line[:date_to])
       reservation_room.save
-
+      binding.pry
+      CustomerMailer.welcome_email(reservation.customer)
       session.delete(:shopping_cart)
     end
     redirect_to root_path

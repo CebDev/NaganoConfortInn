@@ -36,4 +36,6 @@
                                                                   :room_type => room.room_type.title,
                                                                   :room_view => room.room_view.title,
                                                                   :room_price => room.get_price_per_stay(params[:date_from], params[:date_to]) }),
-                                                                  method: :post, :class => "btn btn-default btn-block.btn-light"
+                                                                  method: :post,
+                                                                  :class => "btn btn-default btn-block.btn-light",
+                                                                  data: {confirm: "Reservation was added successfully to your shopping cart.?"}
