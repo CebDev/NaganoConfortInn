@@ -3,5 +3,29 @@
 - if @room_reservation.empty?
   no reservation today
 - else
-  -@room_reservation.each do |room_reservation|
-    =room_reservation.room.number
+  %table.table.table-hover
+    %thead
+      %tr
+        %th Check-in Status
+        %th #Room
+        %th #Reservation
+        %th Name
+        %th Check-out date
+        %th Detail - comment
+    %tbody
+      -@room_reservation.each do |room_reservation|
+        %tr{:class => "clickable-row", data:{ :href => "#{administration_reservation_path(room_reservation.reservation.id)}"} }
+          %td
+            - if room_reservation.room.status == "Busy"
+              .green Check-in done
+              %span.glyphicon.glyphicon-ok-circle.green
+          %td
+            = room_reservation.room.number
+          %td
+            = room_reservation.reservation.id
+          %td
+            = room_reservation.reservation.customer.name
+          %td
+            = room_reservation.date_to.to_date
+          %td
+            = room_reservation.reservation.comment

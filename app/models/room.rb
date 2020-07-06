@@ -56,8 +56,15 @@ class Room < ActiveRecord::Base
     total_price
   end
 
-  def is_reserved_today?
+  def is_check_in_today?
     if ReservationRoom.where("room_id = ?", id).where("date_from = ?", Time.new.strftime("%Y-%m-%d").to_s).empty?
+      return false
+    end
+    true
+  end
+
+  def is_check_out_today?
+    if ReservationRoom.where("room_id = ?", id).where("date_to = ?", Time.new.strftime("%Y-%m-%d").to_s).empty?
       return false
     end
     true

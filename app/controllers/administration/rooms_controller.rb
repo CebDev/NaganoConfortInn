@@ -48,9 +48,17 @@ class Administration::RoomsController < ApplicationController
 
   def update
     @room = Room.find(params[:id])
+    if params[:status]
+      @room.status = params[:status]
+    end
     if @room.update_attributes(params[:room])
       flash[:notice] = "Room was updated successfully."
-      redirect_to edit_administration_room_path(@room)
+      binding.pry
+      if params[:back_link]
+        redirect_to params[:back_link]
+      else
+        redirect_to edit_administration_room_path(@room)
+      end
     else
       @room_picture = RoomPicture.new(params[:room_picture])
       @btn_text = "Save"

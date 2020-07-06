@@ -26,9 +26,13 @@
   }
 }
 
+.room-show{
+  display: inline-block;
+}
 
 
 .status{
+  margin-top: 10px;
   float: right;
   text-align: center;
   font-size: large;
@@ -43,4 +47,18 @@
   }
 }
 
+.btn-status{
+  color: white;
+}
 
+.btn-orange{
+  background-color: orange;
+}
+
+.btn-green{
+  background-color: green;
+}
+
+.btn-red{
+  background-color: red;
+}

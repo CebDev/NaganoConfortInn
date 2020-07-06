@@ -7,11 +7,15 @@ module RoomsHelper
       html << "<p class='red'>No rate</p>".html_safe
     elsif room.status == "Busy"
       html << "<span class='glyphicon glyphicon-remove-circle red'></span>".html_safe
-      html << "<p class='red'>Busy</p>".html_safe
+      if room.is_check_out_today?
+        html << "<p class='red'>Check out</p>".html_safe
+      else
+        html << "<p class='red'>Busy</p>".html_safe
+      end
     elsif room.status == "Ready"
-      if room.is_reserved_today?
+      if room.is_check_in_today?
         html << "<span class='glyphicon glyphicon-remove-circle red'></span>".html_safe
-        html << "<p class='red'>Check in</p>".html_safe
+        html << "<p class='red'>Reserved</p>".html_safe
         room.status = "Check in"
       else
         html << "<span class='glyphicon glyphicon-ok-circle green'></span>".html_safe
