@@ -5,8 +5,8 @@
 %h3.room-show Change room status
 .status
   =link_to "Cleaning", administration_room_path(@room, :status => "Cleaning", :back_link => administration_room_path(@room)), method: :put, class: "btn btn-default btn-status btn-orange"
-  =link_to "Ready", administration_room_path(@room, :status => "Ready"), method: :put, class: "btn btn-default btn-status btn-green"
-  =link_to "Busy", administration_room_path(@room, :status => "Busy"), method: :put, class: "btn btn-default btn-status btn-red"
+  =link_to "Ready", administration_room_path(@room, :status => "Ready", :back_link => administration_room_path(@room)), method: :put, class: "btn btn-default btn-status btn-green"
+  =link_to "Busy", administration_room_path(@room, :status => "Busy", :back_link => administration_room_path(@room)), method: :put, class: "btn btn-default btn-status btn-red"
 %hr
 %h3 Room details
 %table.table
@@ -53,4 +53,4 @@
           = reservation_room.date_to
         %td
           = reservation_room.created_at.to_date
-
+= link_to "back to room manager", administration_overview_path

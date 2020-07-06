@@ -2,21 +2,31 @@
 .row.placeholders
   .col-xs-6.col-sm-3.placeholder
     %img(src="https://via.placeholder.com/200")
-    %h4 "Label"
+    %h4 Occupancy
     %span.text-muted
-      Room: #{@nbr_total_room}
-      Room checked-in: #{@nbr_room_checked_in}
+      %p Room: #{@nbr_total_room}
+      %p Room checked-in: #{@nbr_room_checked_in}
 
   .col-xs-6.col-sm-3.placeholder
     %img(src="https://via.placeholder.com/200")
-    %h4 "Label"
-    %span.text-muted "Comment"
+    %h4 Income
+    %span.text-muted
+      %p Total income possibility: $ #{@total_income_possibility}
+      %p Total income of the day: $ #{@total_income_of_day}
   .col-xs-6.col-sm-3.placeholder
     %img(src="https://via.placeholder.com/200")
-    %h4 "Label"
-    %span.text-muted "Comment"
+    %h4 Month result until today
+    %span.text-muted
+      %p $ #{@month_income}
   .col-xs-6.col-sm-3.placeholder
     %img(src="https://via.placeholder.com/200")
-    %h4 "Label"
-    %span.text-muted "Comment"
-%h2.sub-header Reservation planning
+    %h4 Estimated income for #{Date::MONTHNAMES[Date.today.month]}
+    %span.text-muted
+      %p $ #{@month_estimated_income}
+%h2.sub-header Today's planning
+.col-sm-6
+  %h3 Today's Check-out
+  = render "administration/administration/check_in", :rooms_reservation => @room_reservation_check_out
+.col-sm-6
+  %h3 Today's Check-in
+  = render "administration/administration/check_in", :rooms_reservation => @room_reservation
