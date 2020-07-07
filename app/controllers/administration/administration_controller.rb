@@ -28,7 +28,6 @@ class Administration::AdministrationController < ApplicationController
       month_rooms_reserved = ReservationRoom.where("date_from <= ? AND date_to >= ?", d, d)
       month_rooms_reserved.each { |room_reserved| @month_estimated_income += room_reserved.room.get_price_per_nigth(d)}
     end
-
     # **** Check ****
     # Check in
     @room_reservation = rooms_reserved

@@ -17,14 +17,23 @@
         .col-sm-4
           = f.select(:room_view_id, @room_views.collect { |room_view| [room_view.title, room_view.id] }, {}, {class: "form-control"})
       .form-group
-        .form-group
         = f.label :capacity, "Capacity", values:@room.capacity, class: "col-sm-2 control-label"
         .col-sm-4
           = f.text_field :capacity, class: "form-control"
       .form-group
-        %label.col-sm-2.control-label Room next : A implementer
+        %label.col-sm-2.control-label Room next :
+        .col-sm-4
+          %ul
+            - @room_adjacents.each do |room_adjacent|
+              %li
+                = Room.find(room_adjacent.room_adjacent_id).number
+      .form-group
+        .col-sm-2
+          = label_tag :next_room, "Add next room", class: "control-label"
+          %br you select multiple room number by pressing ctrl
+        .col-sm-4
+          = select_tag :next_room, options_from_collection_for_select(@rooms, "id", "number"), multiple: true, class: "form-control", id: "room-next-select"
       - if @room.errors.any?
-        - binding.pry
         - if @room.get_room_pricing_on_date(Date.new).empty?
           .alert.alert-danger
             %i.fa.fa-exclamation-triangle

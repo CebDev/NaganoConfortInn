@@ -3,6 +3,7 @@ class Room < ActiveRecord::Base
   belongs_to :room_view, class_name: RoomView
   has_many :reservation_rooms
   has_many :room_pictures
+  has_many :room_adjacents
 
   validates :number, uniqueness: true
   validates :number, :floor, presence: true

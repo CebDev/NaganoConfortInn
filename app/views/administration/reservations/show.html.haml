@@ -35,7 +35,7 @@
               .thumbnail
                 = image_tag( reservation_room.room.get_first_picture, class: 'img-reservation')
             .col-sm-9
-              %p From #{reservation_room.date_from} to #{reservation_room.date_from}
+              %p From #{reservation_room.date_from} to #{reservation_room.date_to}
               %p #{reservation_room.room.room_type.title} - #{reservation_room.room.room_view.title}
               %p Room number: #{reservation_room.room.number}  -  Floor: #{reservation_room.room.floor}
               %p Capacity: #{ pluralize(reservation_room.room.capacity, "sleeper")}

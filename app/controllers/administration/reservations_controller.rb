@@ -25,15 +25,15 @@ class Administration::ReservationsController < ApplicationController
                  .where("room_type_id = ?", room_type_id)
                  .where("room_view_id = ?", room_view_id)
                  .first
+      binding.pry
       reservation_room = ReservationRoom.new(reservation_id: reservation.id,
                                              room_id: room.id,
                                              date_from: line[:date_from],
                                              date_to: line[:date_to])
       reservation_room.save
-      binding.pry
-      CustomerMailer.welcome_email(reservation.customer)
-      session.delete(:shopping_cart)
     end
+    CustomerMailer.welcome_email(reservation.customer)
+    session.delete(:shopping_cart)
     redirect_to root_path
   end
 
@@ -41,7 +41,7 @@ class Administration::ReservationsController < ApplicationController
 
   def get_free_rooms_on_date(date_from, date_to)
     Room.joins("LEFT JOIN reservation_rooms ON reservation_rooms.room_id = rooms.id")
-        .where("reservation_rooms.id IS NULL OR reservation_rooms.date_to < DATE('#{date_from}') OR reservation_rooms.date_from > DATE('#{date_to}')" )
+        .where("reservation_rooms.id IS NULL OR (reservation_rooms.date_to < DATE('#{date_from}') AND reservation_rooms.date_from > DATE('#{date_to}'))" )
   end
 
 end

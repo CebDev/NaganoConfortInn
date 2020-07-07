@@ -6,6 +6,7 @@
       %th Type
       %th View
       %th Capacity
+      %th Adjacent rooms
       %th
   %tbody
     - @rooms.each do |room|
@@ -18,5 +19,9 @@
           = room.room_view.title
         %td
           #{room.capacity} persons
+        %td
+          - room.room_adjacents.each do |room_adjacent|
+            %li
+              = Room.find(room_adjacent.room_adjacent_id).number
         %td
           = link_to "Edit", edit_administration_room_path(room), :class => "btn btn-default btn-sm btn-block"

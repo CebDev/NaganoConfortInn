@@ -17,6 +17,8 @@ class Administration::RoomsController < ApplicationController
     @btn_text = "Create"
     @room = Room.new
     @room_picture = RoomPicture.new
+    @rooms = Room.order("number ASC")
+    @room_adjacents = @room.room_adjacents
   end
 
   def create
@@ -44,6 +46,8 @@ class Administration::RoomsController < ApplicationController
     @btn_text = "Save"
     @room = Room.find(params[:id])
     @room_picture = RoomPicture.new(params[:room_picture])
+    @rooms = Room.order("number ASC")
+    @room_adjacents = @room.room_adjacents
   end
 
   def update
@@ -51,9 +55,15 @@ class Administration::RoomsController < ApplicationController
     if params[:status]
       @room.status = params[:status]
     end
+    if params[:next_room] && !params[:next_room].empty?
+      params[:next_room].each do |next_room|
+        room_adjacent = RoomAdjacent.new(room_id: @room.id, room_adjacent_id: next_room)
+        room_adjacent.save
+      end
+    end
+
     if @room.update_attributes(params[:room])
       flash[:notice] = "Room was updated successfully."
-      binding.pry
       if params[:back_link]
         redirect_to params[:back_link]
       else
