@@ -1,0 +1,13 @@
+%h1 Thanks for your new reservation
+- @reservation.reservation_rooms.each do |reservation_room|
+  .panel.panel-default
+    .panel-body
+      - if reservation_room.date_from >= Date.today
+        %table.table
+          %tbody
+            %tr
+              %td
+                = image_tag(image_path( reservation_room.room.get_first_picture), class: 'img-reservation')
+              %td
+                %p From #{reservation_room.date_from} to #{reservation_room.date_to}
+                %p #{reservation_room.room.room_type.title} - #{reservation_room.room.room_view.title}

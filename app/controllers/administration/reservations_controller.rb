@@ -23,12 +23,16 @@ class Administration::ReservationsController < ApplicationController
       reservation_room.reservation_id = reservation.id
       reservation_room.save
     end
-    CustomerMailer.welcome_email(reservation.customer)
+    CustomersMailer.reservation_confirmation(reservation).deliver
     session.delete(:shopping_cart)
     redirect_to root_path
   end
 
-  private
+  def send_confirmation_mail
+    reservation = Reservation.find(params[:reservation_id])
+    CustomersMailer.reservation_confirmation(reservation).deliver
+    redirect_to administration_reservation_path(reservation)
+  end
 
 
 

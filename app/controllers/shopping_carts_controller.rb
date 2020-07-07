@@ -16,19 +16,16 @@ class ShoppingCartsController < ApplicationController
                .where("room_type_id = ?", params[:add_to_shopping_cart][:room_type_id])
                .where("room_view_id = ?", params[:add_to_shopping_cart][:room_view_id])
                .first
-    binding.pry
     reservation_room = ReservationRoom.new(reservation_id: -1,
                                            room_id: room.id,
                                            date_from: params[:add_to_shopping_cart][:date_from],
                                            date_to: params[:add_to_shopping_cart][:date_to])
     reservation_room.save
     session[:shopping_cart] << reservation_room.id
-    binding.pry
     redirect_to session[:last_search_uri]
   end
 
   def delete
-    binding.pry
     ReservationRoom.delete(session[:shopping_cart][params[:remove_index].to_i])
     session[:shopping_cart].delete_at(params[:remove_index].to_i)
     redirect_to shopping_cart_path

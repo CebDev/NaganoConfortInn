@@ -41,3 +41,4 @@
               %p Capacity: #{ pluralize(reservation_room.room.capacity, "sleeper")}
             .col-sm-1.align-right
               = link_to "", administration_reservation_room_path(reservation_room), method: :delete, class: 'fa fa-times', data: {confirm: "Are you sure?"}
+    = link_to "Send confirmation mail", send_confirmation_mail_path(:reservation_id => @reservation.id), class: "btn btn-default btn-lg"

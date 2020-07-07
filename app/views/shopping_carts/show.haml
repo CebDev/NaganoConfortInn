@@ -16,7 +16,6 @@
         %p No reservation in your shopping cart
       -else
         - @shopping_cart.each_with_index do |reservation_room, index|
-          - binding.pry
           .panel.panel-default
             .panel-body
               %h3.shopping-cart

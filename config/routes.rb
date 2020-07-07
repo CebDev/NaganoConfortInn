@@ -70,7 +70,7 @@ NaganoConforInn::Application.routes.draw do
   get 'myreservations' => 'customers#reservations'
   get 'administration', to: 'administration/administration#index'
   get 'administration/overview', to: 'administration/administration#overview'
-
+  get 'send_confirmation_mail', to: 'administration/reservations#send_confirmation_mail', :as => 'send_confirmation_mail'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
