@@ -31,8 +31,14 @@ class Administration::RoomPricingsController < ApplicationController
   end
 
   def edit
-    @btn_text = "Edit"
     @room_pricing = RoomPricing.find(params[:id])
+    # A revoir Ajouter romm pricing dans reservation_room
+    if @room_pricing.reservation_rooms.empty?
+      @btn_text = "Can't edit"
+    else
+      @btn_text = "Edit"
+    end
+
   end
 
   def update

@@ -39,10 +39,6 @@
           %h6 Special request or comment
           %p Please write your requests in English or French. Special requests cannot be guaranteed – but the property will do its best to meet your needs.
           = f.text_area :comment, class: "form-control", rows: "5"
-        - if @shopping_cart.length > 1
-          .form-group
-            = check_box_tag :close_rooms
-            = label_tag 'I want rooms close to each other (if available)'
         .col-sm-8
         .col-sm-2
           %p.align-right Total price :

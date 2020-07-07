@@ -16,6 +16,7 @@ class ShoppingCartsController < ApplicationController
                .where("room_type_id = ?", params[:add_to_shopping_cart][:room_type_id])
                .where("room_view_id = ?", params[:add_to_shopping_cart][:room_view_id])
                .first
+    binding.pry
     reservation_room = ReservationRoom.new(reservation_id: -1,
                                            room_id: room.id,
                                            date_from: params[:add_to_shopping_cart][:date_from],

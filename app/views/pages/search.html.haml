@@ -3,38 +3,43 @@
   .container
     = render "form_search_room"
   %h2 Result
-  -@rooms.each do |room|
-    .panel.panel-default
-      .panel-body
-        .row
-          .col-sm-3
-            .thumbnail
-              - if room.room_pictures.empty?
-                = image_tag "room_double_ocean.jpeg"
-              - else
-                = image_tag room.room_pictures.first.file_name
-          .col-sm-9
-            %h3
-              = room.room_type.title
-              - if room.room_view.title == "Ocean"
-                = "  -  View ocean"
-            %hr
-            .container-detail-room
-              .col-sm-3
-                %p.left Capacity
-                - for i in (1..room.capacity)
-                  %span.fa.fa-user
-              .col-sm-5
-                %p Price for #{pluralize((params[:date_to].to_date - params[:date_from].to_date).to_i, 'nigth')}
-                %p.orange $ #{room.get_price_per_stay(params[:date_from], params[:date_to])}
-              .col-sm-4.container-btn
-                %p.orange #{count_room(room, params[:date_from], params[:date_to])} rooms available
-                %p Select number of room
-                = link_to "Book",
-                    shopping_cart_path(:add_to_shopping_cart => { :date_from => params[:date_from],
-                                                                  :date_to => params[:date_to],
-                                                                  :room_type_id => room.room_type.id,
-                                                                  :room_view_id => room.room_view.id }),
-                                                                  method: :post,
-                                                                  :class => "btn btn-default btn-block.btn-light",
-                                                                  data: {confirm: "Reservation was added successfully to your shopping cart.?"}
+  - if @rooms.empty?
+    No room available corresponding to your research
+  - else
+    -@rooms.each do |room|
+      .panel.panel-default
+        .panel-body
+          .row
+            .col-sm-3
+              .thumbnail
+                - if room.room_pictures.empty?
+                  = image_tag "room_double_ocean.jpeg"
+                - else
+                  = image_tag room.room_pictures.first.file_name
+            .col-sm-9
+              %h3
+                = room.room_type.title
+                - if room.room_view.title == "Ocean"
+                  = "  -  View ocean"
+              %hr
+              .container-detail-room
+                .col-sm-3
+                  %p.left Capacity
+                  - for i in (1..room.capacity)
+                    %span.fa.fa-user
+                .col-sm-5
+                  %p Price for #{pluralize((params[:date_to].to_date - params[:date_from].to_date).to_i, 'nigth')}
+                  %p.orange $ #{room.get_price_per_stay(params[:date_from], params[:date_to])}
+                .col-sm-4.container-btn
+                  %p.orange #{count_room(room, params[:date_from], params[:date_to])} rooms available
+                  -# - if session[:shopping_cart] && !session[:shopping_cart].empty?
+                  -#   .form-group
+                  -#     = label_tag 'Ir = want rooms close to each other (if available)'
+                  -#     = check_box_tag :close_rooms
+                  = link_to "Book",
+                      shopping_cart_path(:add_to_shopping_cart => { :date_from => params[:date_from],
+                                                                    :date_to => params[:date_to],
+                                                                    :room_type_id => room.room_type.id,
+                                                                    :room_view_id => room.room_view.id } ),
+                                                                    method: :post,
+                                                                    :class => "btn btn-default btn-block btn-light"
