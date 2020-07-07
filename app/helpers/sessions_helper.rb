@@ -6,6 +6,7 @@ module SessionsHelper
 
   def log_out
     session.delete(:customer_id)
+    session.delete(:shopping_cart)
   end
 
   def current_customer

@@ -15,20 +15,21 @@
       - if @shopping_cart.empty?
         %p No reservation in your shopping cart
       -else
-        - @shopping_cart.each_with_index do |value, index|
+        - @shopping_cart.each_with_index do |reservation_room, index|
+          - binding.pry
           .panel.panel-default
             .panel-body
               %h3.shopping-cart
-                1 room: #{value[:room_type]}
-                - if value[:room_view] == "Ocean"
+                1 room: #{reservation_room.room.room_type.title}
+                - if reservation_room.room.room_view.title == "Ocean"
                   = "  -  View ocean"
                 %span
                   = link_to "X", shopping_cart_path(:remove_index => index), method: :delete
-              %p.col-sm-8 From #{value[:date_from]} to #{value[:date_to]}
+              %p.col-sm-8 From #{reservation_room.date_from} to #{reservation_room.date_to}
               %p.col-sm-2.align-right Price for your stay:
               %p.orange.col-sm-2
-                $ #{value[:room_price]}
-                - total_price += value[:room_price].to_f
+                $ #{reservation_room.room.get_price_per_stay(reservation_room.date_from, reservation_room.date_to)}
+                - total_price += reservation_room.room.get_price_per_stay(reservation_room.date_from, reservation_room.date_to).to_f
   .panel.panel-default
     .panel-heading Resume
     .panel-body
