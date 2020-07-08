@@ -3,36 +3,28 @@ class Administration::AdministrationController < ApplicationController
   layout "administration"
 
   def index
-    # **** Statistique overview ****
-    # occupancy
-    rooms = Room.all
-    rooms_reserved = ReservationRoom.where("date_from = ?", Time.new.strftime("%Y-%m-%d").to_s )
     @title = 'NCI administration'
+    rooms = Room.all
+    today_rooms_reserved = Room.joins('INNER JOIN reservation_rooms ON reservation_rooms.room_id = rooms.id').where("date_from = ?", Date.today )
+    stats = Statistics.new
+
+    # **** Statistics overview ****
+    # occupancy
     @nbr_total_room = rooms.length
-    @nbr_room_checked_in = rooms_reserved.length
+    @nbr_room_checked_in = today_rooms_reserved.length
     #income of the day
-    @total_income_possibility = 0
-    rooms.each { |room| @total_income_possibility += room.get_price_per_nigth(Date.today)}
-    @total_income_of_day = 0
-    rooms_reserved.each { |room_reserved| @total_income_of_day += room_reserved.room.get_price_per_nigth(Date.today)}
+    @total_income_possibility = stats.total_income_per_day(rooms)
+    @total_income_of_day = stats.total_income_per_day(today_rooms_reserved)
     #month result until today
-    @month_income = 0
     date = Date.today
-    (Date.new(date.year, date.month, 1)..Date.today).each do |d|
-      month_rooms_reserved = ReservationRoom.where("date_from <= ? AND date_to >= ?", d, d)
-      month_rooms_reserved.each { |room_reserved| @month_income += room_reserved.room.get_price_per_nigth(d)}
-    end
+    @month_income_until_today = stats.total_income_per_period(Date.new(date.year, date.month, 1), Date.current)
     #estimated month result
-    @month_estimated_income = @month_income
-    ((Date.today+1)..Date.new(date.year, date.month, -1)).each do |d|
-      month_rooms_reserved = ReservationRoom.where("date_from <= ? AND date_to >= ?", d, d)
-      month_rooms_reserved.each { |room_reserved| @month_estimated_income += room_reserved.room.get_price_per_nigth(d)}
-    end
+    @month_estimated_income = stats.total_income_per_period(Date.new(date.year, date.month, 1), Date.new(date.year, date.month, -1))
     # **** Check ****
     # Check in
-    @room_reservation = rooms_reserved
+    @room_reservations = ReservationRoom.preload(:room, :reservation).where("date_from = ?", Date.current )
     # check out
-    @room_reservation_check_out = ReservationRoom.where("date_to = ?", Time.new.strftime("%Y-%m-%d").to_s )
+    @room_reservations_check_out = ReservationRoom.preload(:room, :reservation).where("date_to = ?", Date.current )
   end
 
   def overview

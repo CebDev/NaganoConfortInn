@@ -17,7 +17,7 @@
     %img(src="https://via.placeholder.com/200")
     %h4 Month result until today
     %span.text-muted
-      %p $ #{@month_income}
+      %p $ #{@month_income_until_today}
   .col-xs-6.col-sm-3.placeholder
     %img(src="https://via.placeholder.com/200")
     %h4 Estimated income for #{Date::MONTHNAMES[Date.today.month]}
@@ -26,7 +26,7 @@
 %h2.sub-header Today's planning
 .col-sm-6
   %h3 Today's Check-out
-  = render "administration/administration/check_in", :rooms_reservation => @room_reservation_check_out
+  = render "administration/administration/check_in", :rooms_reservation => @room_reservations_check_out
 .col-sm-6
   %h3 Today's Check-in
-  = render "administration/administration/check_in", :rooms_reservation => @room_reservation
+  = render "administration/administration/check_in", :rooms_reservation => @room_reservations
