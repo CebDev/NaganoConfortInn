@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
   end
 
   def create
+    binding.pry
     customer = Customer.find_by_email params[:session][:email]
     if customer
       log_in customer
@@ -18,5 +19,7 @@ class SessionsController < ApplicationController
     log_out
     redirect_to root_path
   end
+
+
 
 end

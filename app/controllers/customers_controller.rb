@@ -5,11 +5,11 @@ class CustomersController < ApplicationController
   end
 
   def create
+    binding.pry
     @customer = Customer.new(params[:customer])
     if @customer.save
-      flash[:notice] = "Your logged successfully."
       log_in @customer
-      CustomerMailer.welcome_email
+      # CustomerMailer.welcome_email
       redirect_to index_path
     else
       render 'pages/sign_up'
