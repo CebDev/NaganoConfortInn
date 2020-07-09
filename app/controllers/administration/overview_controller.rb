@@ -3,6 +3,9 @@ class Administration::OverviewController < ApplicationController
   layout "administration"
 
   def index
+    puts "Rails.logger.level => #{Rails.logger.level}"
+    Rails.logger.level = 0
+    puts "Rails.logger.level => #{Rails.logger.level}"
     @title = 'NCI administration'
     rooms = Room.all
     today_rooms_reserved = Room.joins('INNER JOIN reservation_rooms ON reservation_rooms.room_id = rooms.id').where("date_from = ?", Date.today )
@@ -22,13 +25,13 @@ class Administration::OverviewController < ApplicationController
     @month_estimated_income = stats.total_income_per_period(Date.new(date.year, date.month, 1), Date.new(date.year, date.month, -1))
     # **** Check ****
     # Check in
-    @room_reservations = ReservationRoom.preload(:room, :reservation).where("date_from = ?", Date.current )
+    @room_reservations = ReservationRoom.preload(:room, :reservation).start_today
     # check out
-    @room_reservations_check_out = ReservationRoom.preload(:room, :reservation).where("date_to = ?", Date.current )
+    @room_reservations_check_out = ReservationRoom.preload(:room, :reservation).stop_today
   end
 
   def room_manager
-    @rooms = Room.order("floor ASC, number ASC")
+    @rooms = Room.preload(:room_type, :room_view).order("floor ASC, number ASC")
   end
 
 end
