@@ -68,8 +68,8 @@ NaganoConforInn::Application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   get 'sign_up' => 'pages#sign_up', :as => "sign_up"
   get 'myreservations' => 'customers#reservations'
-  get 'administration', to: 'administration/administration#index'
-  get 'administration/overview', to: 'administration/administration#overview'
+  get 'administration' => 'administration/overview#index'
+  get 'room_manager' => 'administration/overview#room_manager', :as => 'room_manager'
   get 'send_confirmation_mail', to: 'administration/reservations#send_confirmation_mail', :as => 'send_confirmation_mail'
   # See how all your routes lay out with "rake routes"
 

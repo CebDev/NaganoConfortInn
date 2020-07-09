@@ -1,4 +1,4 @@
-class Administration::AdministrationController < ApplicationController
+class Administration::OverviewController < ApplicationController
 
   layout "administration"
 
@@ -27,7 +27,7 @@ class Administration::AdministrationController < ApplicationController
     @room_reservations_check_out = ReservationRoom.preload(:room, :reservation).where("date_to = ?", Date.current )
   end
 
-  def overview
+  def room_manager
     @rooms = Room.order("floor ASC, number ASC")
   end
 
